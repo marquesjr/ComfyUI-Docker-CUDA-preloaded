@@ -1,76 +1,62 @@
 #!/bin/bash
 set -euo pipefail
+shopt -s extglob
 
 # Directories
 MODELS_DIR="/app/ComfyUI/models"
-mkdir -p "$MODELS_DIR"
 
-# Create directory structure if missing
-mkdir -p "$MODELS_DIR/checkpoints" \
-  "$MODELS_DIR/text_encoders" \
-  "$MODELS_DIR/diffusion_models" \
-  "$MODELS_DIR/clip_vision" \
-  "$MODELS_DIR/clip" \
-  "$MODELS_DIR/loras" \
-  "$MODELS_DIR/controlnet" \
-  "$MODELS_DIR/upscale_models" \
-  "$MODELS_DIR/vae" \
-  "$MODELS_DIR/ultralytics" \
-  "$MODELS_DIR/xlabs/controlnets" \
-  "$MODELS_DIR/style_models" \
-  "$MODELS_DIR/liveportrait" \
-  "$MODELS_DIR/sams" \
-  "$MODELS_DIR/unet"
-
-# declare URL lists
+# declare special lists
 GIT_REPOS=()
 CUSTOM=() # usually files to be downloaded inside git cloned directories
-CHECKPOINTS=()
-UNET=()
-UPSCALE_MODELS=()
-TEXT_ENCODERS=()
-DIFFUSION_MODELS=()
-CLIP_VISION=()
-CLIP=()
-VAE=()
-LORAS=()
-CONTROLNET=()
-STYLE_MODELS=()
-SAMS=()
 
-# a little INI parser
-current_section=""
+# 1) Define all your “regular” sections once
+LIST_NAMES=(
+  CHECKPOINTS
+  DIFFUSION_MODELS
+  CLIP
+  CLIP_VISION
+  LORAS
+  UNET
+  SAMS
+  STYLE_MODELS
+  UPSCALE_MODELS
+  TEXT_ENCODERS
+  VAE
+  CONTROLNET
+)
+
+# 2) Declare empty arrays for each
+for name in "${LIST_NAMES[@]}"; do
+  eval "declare -a ${name}=()"
+done
+
+# 3) Make all subdirs in one loop
+for name in "${LIST_NAMES[@]}"; do
+  subdir="${name,,}" # lowercase
+  mkdir -p "$MODELS_DIR/$subdir"
+done
+
+# 4) Parse your INI config (models.conf) into those arrays
+current=""
 while IFS= read -r line; do
-  # strip comments and whitespace
+  # strip comments/spaces
   line="${line%%[#;]*}"
   line="${line##+([[:space:]])}"
   line="${line%%+([[:space:]])}"
   [[ -z "$line" ]] && continue
 
   if [[ "$line" =~ ^\[(.+)\]$ ]]; then
-    current_section="${BASH_REMATCH[1]}"
+    current="${BASH_REMATCH[1]}"
     continue
   fi
 
-  case "$current_section" in
-  GIT_REPOS) GIT_REPOS+=("$line") ;;
-  CUSTOM) CUSTOM+=("$line") ;;
-  CHECKPOINTS) CHECKPOINTS+=("$line") ;;
-  DIFFUSION_MODELS) DIFFUSION_MODELS+=("$line") ;;
-  CLIP) CLIP+=("$line") ;;
-  CLIP_VISION) CLIP_VISION+=("$line") ;;
-  LORAS) LORAS+=("$line") ;;
-  UNET) UNET+=("$line") ;;
-  SAMS) SAMS+=("$line") ;;
-  STYLE_MODELS) STYLE_MODELS+=("$line") ;;
-  UPSCALE_MODELS) UPSCALE_MODELS+=("$line") ;;
-  TEXT_ENCODERS) TEXT_ENCODERS+=("$line") ;;
-  VAE) VAE+=("$line") ;;
-  CONTROLNET) CONTROLNET+=("$line") ;;
-  *)
-    echo "[WARN] Unknown section: $current_section"
-    ;;
-  esac
+  # only populate if it’s one of our LIST_NAMES
+  for name in "${LIST_NAMES[@]}"; do
+    if [[ "$current" == "$name" ]]; then
+      eval "${name}+=(\"$line\")"
+      break
+    fi
+  done
 done </app/models.conf
 
 # --- Helpers ---
@@ -174,11 +160,11 @@ done
 # ---------------------------------------------
 echo
 
-for list_name in CHECKPOINTS DIFFUSION_MODELS CLIP CLIP_VISION LORAS UNET SAMS STYLE_MODELS UPSCALE_MODELS TEXT_ENCODERS VAE CONTROLNET; do
-  echo "== Downloading $list_name"
-  # Pass lowercase list_name as subdirectory
-  subdir=$(echo "$list_name" | tr '[:upper:]' '[:lower:]')
-  download_list "$list_name" "$subdir"
+# 5) Now download each
+for name in "${LIST_NAMES[@]}"; do
+  subdir="${name,,}"
+  echo "== Downloading $name into models/$subdir =="
+  download_list "$name" "$subdir"
 done
 
 # Done

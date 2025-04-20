@@ -13,7 +13,7 @@ mkdir -p /app/ComfyUI/models/checkpoints \
 # Download base models if they don't exist
 BASE_MODELS=(
   "https://huggingface.co/lllyasviel/flux1_dev/resolve/main/flux1-dev-fp8.safetensors"
-  "https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev.safetensors"
+  "https://huggingface.co/bstungnguyen/Flux/resolve/main/flux1-dev.safetensors"
   "https://huggingface.co/Comfy-Org/flux1-schnell/resolve/main/flux1-schnell-fp8.safetensors"
   "https://huggingface.co/comfyanonymous/hunyuan_dit_comfyui/resolve/main/hunyuan_dit_1.2.safetensors"
   "https://huggingface.co/stabilityai/sdxl-turbo/resolve/main/sd_xl_turbo_1.0_fp16.safetensors"

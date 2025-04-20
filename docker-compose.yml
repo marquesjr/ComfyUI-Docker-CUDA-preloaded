@@ -14,13 +14,8 @@ services:
       - ./output:/app/ComfyUI/output
       - ./input:/app/ComfyUI/input
       - comfyui_venv:/venv
-      - ./init_models.sh:/usr/local/bin/init_models.sh:ro
-      - ./init_extensions.sh:/usr/local/bin/init_extensions.sh:ro
-      - ./entrypoint.sh:/usr/local/bin/entrypoint.sh:ro
-    environment:
-      - MODEL_VERSION=Q8_0
-      - DOWNLOAD_FLUX_SCHNELL=yes
-      - DOWNLOAD_FP8_MODELS=yes
+      - ./extensions.conf:/app/extensions.conf:ro
+      - ./models.conf:/app/models.conf:ro
 
 volumes:
   comfyui_venv:

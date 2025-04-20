@@ -8,9 +8,9 @@ ENV DEBIAN_FRONTEND=noninteractive \
     LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 
 # Copy initialization script
-COPY init_models.sh /usr/local/bin/
-COPY init_extensions.sh /usr/local/bin/
-COPY entrypoint.sh /usr/local/bin/
+COPY init_scripts/init_models.sh /usr/local/bin/
+COPY init_scripts/init_extensions.sh /usr/local/bin/
+COPY init_scripts/entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/init_models.sh
 RUN chmod +x /usr/local/bin/init_extensions.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
@@ -73,6 +73,10 @@ RUN pip install --no-cache-dir -r requirements.txt && \
 
 # Create directory structure (will be overridden by volumes)
 RUN mkdir -p models input output custom_nodes
+
+# Copy models and extensions configuration lists:
+COPY extensions.conf /app/extensions.conf
+COPY models.conf /app/models.conf
 
 # Persistent storage configuration
 VOLUME ["/app/ComfyUI/models", "/app/ComfyUI/output", "/app/ComfyUI/input", "/app/ComfyUI/custom_nodes"]

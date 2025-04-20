@@ -8,11 +8,11 @@ cd ComfyUI-Docker-CUDA-preloaded
 docker compose build
 ```
 
-Now, pay attention to [init_models.sh](init_models.sh). It is an entrypoint script for this docker container. It means it will run every time the container loads. It's function is to download many famous models, so we don't have to manually hunt for them (contributions are welcome).
+Now, pay attention to [init_models.sh](init_script/init_models.sh). It is an entrypoint script for this docker container. It means it will run every time the container loads. It's function is to download many famous models, so we don't have to manually hunt for them (contributions are welcome).
 
 Problem is, if you download everything, be prepared to wait for a VERY LONG TIME and see **250GB** of your hard-drive be eaten up. Yes, the models are HUGE, some of them have 25GB or more.
 
-Yes, if you are serious, this shouldn't be a problem. But if you don't want all of those, you can edit the init_models.sh and remove the ones you don't need, then re-build the image.
+Yes, if you are serious, this shouldn't be a problem. But if you don't want all of those, you can edit the [models.conf](models.conf) and remove (remove, not comment out) the ones you don't need, then re-build the image.
 
 If you're ok, just run:
 
@@ -35,7 +35,7 @@ I included several known models such as SDXL, Flux, Hunyuon and more. There is a
 
 ComfyUI allows you to install external extensions, which will add a bunch of new functionality, new nodes and more. Some workflows require that. ComfyUI Manager is pre-installed.
 
-I recommend you add new extensions to the list in `init_extensions.sh` that way, every time you restart the container, it will automatically update (git pull) and install dependencies (pip install).
+I recommend you add new extensions to the list in [extensions.conf](extensions.conf) that way, every time you restart the container, it will automatically update (git pull) and install dependencies (pip install).
 
 Because extensions require python dependencies of their own, I configured "/venv" to be a Docker Volume. If you ever run into problems with dangling dependencies from older versions of some extensions, you can always wipe this volume clean. Next time the container restarts, it will reinstall them from all extensions.
 

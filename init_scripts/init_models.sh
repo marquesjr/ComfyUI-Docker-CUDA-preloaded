@@ -16,7 +16,7 @@ mkdir -p "$MODELS_DIR/checkpoints" \
   "$MODELS_DIR/upscale_models" \
   "$MODELS_DIR/vae" \
   "$MODELS_DIR/ultralytics" \
-  "$MODELS_DIR/sxlabs/controlnets" \
+  "$MODELS_DIR/xlabs/controlnets" \
   "$MODELS_DIR/style_models" \
   "$MODELS_DIR/liveportrait" \
   "$MODELS_DIR/sams" \

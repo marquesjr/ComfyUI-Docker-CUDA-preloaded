@@ -59,7 +59,7 @@ while IFS= read -r line; do
   line="${line%%+([[:space:]])}"
   [[ -z "$line" || "$line" =~ ^\[ ]] && continue
   EXTENSIONS+=("$line")
-done </app/extensions.conf
+done < /app/extensions.conf
 
 echo "== Cloning/updating extensions in $CUSTOM_DIR =="
 for url in "${EXTENSIONS[@]}"; do

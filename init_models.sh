@@ -12,7 +12,8 @@ mkdir -p /app/ComfyUI/models/checkpoints \
 
 # Download base models if they don't exist
 BASE_MODELS=(
-  "https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors"
+  "https://huggingface.co/lllyasviel/flux1_dev/resolve/main/flux1-dev-fp8.safetensors"
+  "https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev.safetensors"
   "https://huggingface.co/Comfy-Org/flux1-schnell/resolve/main/flux1-schnell-fp8.safetensors"
   "https://huggingface.co/comfyanonymous/hunyuan_dit_comfyui/resolve/main/hunyuan_dit_1.2.safetensors"
   "https://huggingface.co/stabilityai/sdxl-turbo/resolve/main/sd_xl_turbo_1.0_fp16.safetensors"
@@ -21,9 +22,9 @@ BASE_MODELS=(
 )
 
 UPSCALE_MODELS=(
-  "https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.2/RealESRGAN_x2.pth"
-  "https://huggingface.co/Comfy-Org/ethersr-anime/resolve/main/4x-ClearRealityV1.pth"
-  "https://huggingface.co/Comfy-Org/realesrgan-anime/resolve/main/RealESRGAN_x4plus_anime_6B.pth"
+  "https://huggingface.co/ai-forever/Real-ESRGAN/resolve/a86fc6182b4650b4459cb1ddcb0a0d1ec86bf3b0/RealESRGAN_x2.pth"
+  "https://huggingface.co/skbhadra/ClearRealityV1/resolve/bc01e27b38eec683dc6e3161dd56069c78e015ac/4x-ClearRealityV1.pth"
+  "https://huggingface.co/ac-pill/upscale_models/resolve/main/RealESRGAN_x4plus_anime_6B.pth"
 )
 
 TEXT_ENCODERS=(
@@ -46,9 +47,13 @@ WEIGHTS=(
   "https://huggingface.co/Comfy-Org/HiDream-I1_ComfyUI/resolve/main/split_files/diffusion_models/hidream_i1_full_fp16.safetensors"
 )
 
-CLIP=(
+CLIP_VISION=(
   "https://huggingface.co/Comfy-Org/HunyuanVideo_repackaged/resolve/main/split_files/clip_vision/llava_llama3_vision.safetensors"
   "https://huggingface.co/comfyanonymous/clip_vision_g/resolve/main/clip_vision_g.safetensors"
+)
+
+CLIP=(
+  "https://huggingface.co/Aitrepreneur/FLX/resolve/2b03fd4a8280bda491f5e54e96ad38fd8ab7336b/ViT-L-14-TEXT-detail-improved-hiT-GmP-TE-only-HF.safetensors"
 )
 
 VAE=(
@@ -91,7 +96,8 @@ download_list() {
 download_list BASE_MODELS checkpoints
 download_list TEXT_ENCODERS text_encoders
 download_list WEIGHTS diffusion_models
-download_list CLIP clip_vision
+download_list CLIP_VISION clip_vision
+download_list CLIP clip
 download_list VAE vae
 download_list UPSCALE_MODELS upscale_models
 #download_list LORAS             loras

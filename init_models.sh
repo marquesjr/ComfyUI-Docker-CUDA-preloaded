@@ -12,13 +12,11 @@ mkdir -p /app/ComfyUI/models/checkpoints \
 
 # Download base models if they don't exist
 BASE_MODELS=(
-  "https://huggingface.co/lllyasviel/flux1_dev/resolve/main/flux1-dev-fp8.safetensors"
-  "https://huggingface.co/bstungnguyen/Flux/resolve/main/flux1-dev.safetensors"
-  "https://huggingface.co/Comfy-Org/flux1-schnell/resolve/main/flux1-schnell-fp8.safetensors"
   "https://huggingface.co/comfyanonymous/hunyuan_dit_comfyui/resolve/main/hunyuan_dit_1.2.safetensors"
   "https://huggingface.co/stabilityai/sdxl-turbo/resolve/main/sd_xl_turbo_1.0_fp16.safetensors"
   "https://huggingface.co/fal/AuraFlow-v0.2/resolve/main/aura_flow_0.2.safetensors"
   "https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.ckpt"
+  "https://huggingface.co/kekusprod/WAI-NSFW-illustrious-SDXL-v110-GGUF/resolve/main/WAI-NSFW-illustrious-SDXL-v110-Q8_0.gguf"
 )
 
 UPSCALE_MODELS=(
@@ -38,11 +36,15 @@ TEXT_ENCODERS=(
   "https://huggingface.co/Comfy-Org/HiDream-I1_ComfyUI/resolve/main/split_files/text_encoders/clip_g_hidream.safetensors"
   "https://huggingface.co/Comfy-Org/HiDream-I1_ComfyUI/resolve/main/split_files/text_encoders/t5xxl_fp8_e4m3fn_scaled.safetensors"
   "https://huggingface.co/Comfy-Org/HiDream-I1_ComfyUI/resolve/main/split_files/text_encoders/llama_3.1_8b_instruct_fp8_scaled.safetensors"
+  "https://huggingface.co/Aitrepreneur/FLX/resolve/2b03fd4a8280bda491f5e54e96ad38fd8ab7336b/ViT-L-14-TEXT-detail-improved-hiT-GmP-TE-only-HF.safetensors"
 )
 
 WEIGHTS=(
+  "https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors"
   "https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/flux1-dev.safetensors"
+  "https://huggingface.co/Comfy-Org/flux1-schnell/resolve/main/flux1-schnell-fp8.safetensors"
   "https://huggingface.co/black-forest-labs/FLUX.1-Fill-dev/resolve/main/flux1-fill-dev.safetensors"
+  "https://huggingface.co/black-forest-labs/FLUX.1-Depth-dev/resolve/main/flux1-depth-dev.safetensors"
   "https://huggingface.co/Comfy-Org/HiDream-I1_ComfyUI/resolve/main/split_files/diffusion_models/hidream_i1_dev_bf16.safetensors"
   "https://huggingface.co/Comfy-Org/HiDream-I1_ComfyUI/resolve/main/split_files/diffusion_models/hidream_i1_full_fp16.safetensors"
 )
@@ -50,6 +52,7 @@ WEIGHTS=(
 CLIP_VISION=(
   "https://huggingface.co/Comfy-Org/HunyuanVideo_repackaged/resolve/main/split_files/clip_vision/llava_llama3_vision.safetensors"
   "https://huggingface.co/comfyanonymous/clip_vision_g/resolve/main/clip_vision_g.safetensors"
+  "https://huggingface.co/Comfy-Org/sigclip_vision_384/resolve/main/sigclip_vision_patch14_384.safetensors"
 )
 
 CLIP=(
@@ -58,6 +61,16 @@ CLIP=(
 
 VAE=(
   "https://huggingface.co/Comfy-Org/HiDream-I1_ComfyUI/resolve/main/split_files/vae/ae.safetensors"
+)
+
+LORAS=(
+  "https://huggingface.co/black-forest-labs/FLUX.1-Canny-dev-lora/resolve/main/flux1-canny-dev-lora.safetensors"
+  "https://huggingface.co/black-forest-labs/FLUX.1-Depth-dev-lora/resolve/main/flux1-depth-dev-lora.safetensors"
+)
+
+CONTROLNET=(
+  "https://huggingface.co/XLabs-AI/flux-controlnet-collections/resolve/main/flux-canny-controlnet-v3.safetensors"
+  "https://huggingface.co/XLabs-AI/flux-controlnet-collections/resolve/main/flux-depth-controlnet-v3.safetensors"
 )
 
 # ---------------------------------------------
@@ -100,8 +113,8 @@ download_list CLIP_VISION clip_vision
 download_list CLIP clip
 download_list VAE vae
 download_list UPSCALE_MODELS upscale_models
-#download_list LORAS             loras
-#download_list CONTROLNET        controlnet
+download_list LORAS loras
+download_list CONTROLNET controlnet
 
 # Set proper permissions
 groupid=$(id -g)

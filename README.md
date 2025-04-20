@@ -5,7 +5,7 @@ I made this project because I wanted a simple, easy solution to setup and run Co
 ```
 git clone https://github.com/akitaonrails/ComfyUI-Docker-CUDA-preloaded.git
 cd ComfyUI-Docker-CUDA-preloaded
-docker build -t comfyui-cuda:latest .
+docker compose build
 ```
 
 Now, pay attention to [init_models.sh](init_models.sh). It is an entrypoint script for this docker container. It means it will run every time the container loads. It's function is to download many famous models, so we don't have to manually hunt for them (contributions are welcome).

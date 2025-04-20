@@ -15,7 +15,6 @@ mkdir -p "$CUSTOM_DIR" "$LAST_DIR"
 # Function: clone or update a git repo, track last commit centrally
 # Usage: git_clone_or_update <target_dir> <git_url>
 # Returns: 0 if new clone or updated commit; 1 if unchanged; >1 on error
-
 git_clone_or_update() {
   local dir="$1" url="$2"
   local name=$(basename "$dir")
@@ -32,14 +31,13 @@ git_clone_or_update() {
     git clone --quiet "$url" "$dir" || return 5
   fi
 
+  # Check for new commit
   new_commit=$(git -C "$dir" rev-parse HEAD) || return 6
-
+  old_commit=""
   if [ -f "$last_commit_file" ]; then
     old_commit=$(<"$last_commit_file")
   fi
-
   if [ "$new_commit" != "$old_commit" ]; then
-    echo "[INFO] New commit for $name: $new_commit"
     echo "$new_commit" >"$last_commit_file"
     return 0
   else
@@ -59,7 +57,7 @@ while IFS= read -r line; do
   line="${line%%+([[:space:]])}"
   [[ -z "$line" || "$line" =~ ^\[ ]] && continue
   EXTENSIONS+=("$line")
-done < /app/extensions.conf
+done </app/extensions.conf
 
 echo "== Cloning/updating extensions in $CUSTOM_DIR =="
 for url in "${EXTENSIONS[@]}"; do

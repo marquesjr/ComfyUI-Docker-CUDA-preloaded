@@ -193,14 +193,41 @@ download_list() {
 
 # Clone or update git repos
 echo
-
 echo "== Cloning/updating GIT_REPOS =="
 for entry in "${GIT_REPOS[@]}"; do
-  path=${entry%%:*}
+  raw_path=${entry%%:*}
   url=${entry#*:}
-  target_dir="$MODELS_DIR/${path}"
-  mkdir -p "$target_dir"
-  git_clone_or_update "$target_dir" "$url"
+
+  # Determine base directory: models dir or subfolder
+  if [ "$raw_path" = "." ]; then
+    base_dir="$MODELS_DIR"
+  else
+    base_dir="$MODELS_DIR/$raw_path"
+  fi
+
+  # Repo name is the basename of the URL
+  repo_name=$(basename "$url" .git)
+  target_dir="$base_dir/$repo_name"
+
+  echo "[INFO] Processing repo $url into $target_dir"
+
+  if [ -d "$target_dir/.git" ]; then
+    # Repo exists: update
+    echo "[INFO] Updating existing repo in $target_dir"
+    git -C "$target_dir" pull --rebase --quiet ||
+      (git -C "$target_dir" fetch --quiet && git -C "$target_dir" reset --hard --quiet)
+  elif [ -d "$target_dir" ]; then
+    # Directory exists but no git metadata: skip cloning
+    echo "[INFO] Directory $target_dir exists and is not a git repo, skipping clone"
+  else
+    # Ensure base directory exists
+    mkdir -p "$base_dir"
+    # Directory doesn't exist: clone
+    echo "[INFO] Cloning $url into $target_dir"
+    git clone --quiet "$url" "$target_dir"
+  fi
+
+  echo
 done
 
 # Download custom files
@@ -211,7 +238,7 @@ for entry in "${CUSTOM[@]}"; do
   path=${entry%%:*}
   url=${entry#*:}
   target_dir="$MODELS_DIR/${path}"
-  mkdir -p "$target_dir"
+  mkdir -p "$target_dir" 2>/dev/null
   echo "[INFO] Downloading custom file from $url to $target_dir"
   wget -nc "$url" -P "$target_dir" ||
     echo "[WARNING] Failed to download custom file $url"
@@ -226,7 +253,7 @@ for list_name in CHECKPOINTS DIFFUSION_MODELS CLIP CLIP_VISION LORAS UNET SAMS S
   echo "== Downloading $list_name"
   # Pass lowercase list_name as subdirectory
   subdir=$(echo "$list_name" | tr '[:upper:]' '[:lower:]')
-  download_list "$list_name" $subdir
+  download_list "$list_name" "$subdir"
 done
 
 # Done

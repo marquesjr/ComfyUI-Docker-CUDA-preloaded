@@ -1,0 +1,17 @@
+# Ignore all downloaded models
+/models/
+
+# Ignore input/output folders
+/input/
+/output/
+
+# Ignore all custom nodes
+/custom_nodes/
+
+# If you’re using a venv
+/venv/
+
+# Compose override, env files, logs, etc
+docker-compose.override.yml
+.env
+*.log

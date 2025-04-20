@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  comfyui:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: akitaonrails-comfyui:latest
+    container_name: comfyui
+    ports:
+      - "8188:8188"
+    gpus: all
+    volumes:
+      - ./models:/app/ComfyUI/models
+      - ./custom_nodes:/app/ComfyUI/custom_nodes
+      - ./output:/app/ComfyUI/output
+      - ./input:/app/ComfyUI/input
+      - comfyui_venv:/venv
+    environment:
+      - MODEL_VERSION=Q8_0
+      - DOWNLOAD_FLUX_SCHNELL=yes
+      - DOWNLOAD_FP8_MODELS=yes
+
+volumes:
+  comfyui_venv:
+    name: comfyui_venv
+    driver: local

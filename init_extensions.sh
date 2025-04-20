@@ -6,47 +6,46 @@ set -euo pipefail
 # ---------------------------------------------
 
 # Base ComfyUI directories
-COMFY_DIR="${COMFYUI_DIR:-/app/ComfyUI}"
+COMFY_DIR="/app/ComfyUI"
 CUSTOM_DIR="$COMFY_DIR/custom_nodes"
+LAST_DIR="$CUSTOM_DIR/.last_commits"
+# Ensure directories exist
+mkdir -p "$CUSTOM_DIR" "$LAST_DIR"
 
-# --- Helpers ---
-ccd() {
-  mkdir -p "$1"
-  cd "$1"
-}
+# Function: clone or update a git repo, track last commit centrally
+# Usage: git_clone_or_update <target_dir> <git_url>
+# Returns: 0 if new clone or updated commit; 1 if unchanged; >1 on error
 
 git_clone_or_update() {
-  local target="$1"
-  shift
-  local repo="$1"
-  if [ -d "$target/.git" ]; then
-    echo "Updating $(basename "$target")..."
-    (cd "$target" && git pull --quiet) || echo "Warning: git pull failed in $target"
-  else
-    echo "Cloning $(basename "$repo")..."
-    git clone "$repo" "$target"
-  fi
-}
+  local dir="$1" url="$2"
+  local name=$(basename "$dir")
+  local last_commit_file="$LAST_DIR/${name}.commit"
+  local new_commit old_commit branch
 
-download_hf_file() {
-  local repo="$1"
-  local file="$2"
-  if [ -f "$file" ]; then
-    echo "  $file exists, skipping."
+  if [ -d "$dir/.git" ]; then
+    echo "[INFO] Fetching updates for $name"
+    git -C "$dir" fetch --quiet || return 2
+    branch=$(git -C "$dir" rev-parse --abbrev-ref HEAD) || return 3
+    git -C "$dir" reset --hard "origin/$branch" --quiet || return 4
   else
-    echo "  Downloading $file from $repo..."
-    if ! huggingface-cli download "$repo" "$file" --local-dir .; then
-      echo "  Warning: failed to download $file from $repo"
-    fi
+    echo "[INFO] Cloning $name from $url"
+    git clone --quiet "$url" "$dir" || return 5
   fi
-}
 
-download_hf_files() {
-  local repo="$1"
-  shift
-  for f in "$@"; do
-    download_hf_file "$repo" "$f"
-  done
+  new_commit=$(git -C "$dir" rev-parse HEAD) || return 6
+
+  if [ -f "$last_commit_file" ]; then
+    old_commit=$(<"$last_commit_file")
+  fi
+
+  if [ "$new_commit" != "$old_commit" ]; then
+    echo "[INFO] New commit for $name: $new_commit"
+    echo "$new_commit" >"$last_commit_file"
+    return 0
+  else
+    echo "[INFO] No changes in $name ($new_commit)"
+    return 1
+  fi
 }
 
 # ---------------------------------------------
@@ -89,67 +88,21 @@ extensions=(
   "https://github.com/cubiq/ComfyUI_IPAdapter_plus.git"
 )
 
-echo "\n== Cloning/updating extensions in $CUSTOM_DIR =="
-mkdir -p "$CUSTOM_DIR"
+echo "== Cloning/updating extensions in $CUSTOM_DIR =="
 for url in "${extensions[@]}"; do
   name=$(basename "$url" .git)
-  git_clone_or_update "$CUSTOM_DIR/$name" "$url"
-done
-
-# Install extension Python deps if present
-for ext in "$CUSTOM_DIR"/*; do
-  if [ -f "$ext/requirements.txt" ]; then
-    echo "Installing deps for $(basename "$ext")..."
-    pip install --no-cache-dir -r "$ext/requirements.txt" || echo "Warning: pip install failed for $ext"
-  fi
-done
-
-# ---------------------------------------------
-# ---------------------------------------------
-# 2) Process all HuggingFace model sets
-# ---------------------------------------------
-HF_MODEL_SETS=(
-  "Aitrepreneur/insightface:insightface:"
-  "Aitrepreneur/Florence-2-base:LLM/Florence-2-base:pytorch_model.bin"
-  "microsoft/Florence-2-large:LLM/Florence-2-large:pytorch_model.bin"
-  #"Aitrepreneur/llava-llama-3-8b-text-encoder-tokenizer:LLM/llava-llama-3-8b-text-encoder-tokenizer:model-00001-of-00004.safetensors model-00002-of-00004.safetensors model-00003-of-00004.safetensors model-00004-of-00004.safetensors"
-  "Aitrepreneur/test:clip/clip-vit-large-patch14:model.safetensors"
-  "Aitrepreneur/FLX:clip:longclip-L.pt clip_l.safetensors"
-  "Aitrepreneur/FLX:clip_vision:sigclip_vision_patch14_384.safetensors"
-  "Aitrepreneur/FLX:checkpoints:ltx-video-2b-v0.9-fp8_e4m3fn.safetensors"
-  "Aitrepreneur/FLX:controlnet:diffusion_pytorch_model_promax.safetensors Shakker-LabsFLUX1-dev-ControlNet-Union-Pro.safetensors"
-  "Aitrepreneur/FLX:diffusion_models:hunyuan_video_720_cfgdistill_fp8_e4m3fn.safetensors hunyuan_video_FastVideo_720_fp8_e4m3fn.safetensors"
-  "Aitrepreneur/FLX:vae:ae.sft LTX_vae.safetensors hunyuan_video_vae_bf16.safetensors"
-  "Aitrepreneur/FLX:xlabs/controlnets:flux-canny-controlnet-v3.safetensors flux-depth-controlnet-v3.safetensors flux-hed-controlnet-v3.safetensors"
-  "Aitrepreneur/FLX:upscale_models:4x-ClearRealityV1.pth RealESRGAN_x4plus_anime_6B.pth"
-  "Aitrepreneur/FLX:style_models:flux1-redux-dev.safetensors"
-  "Aitrepreneur/FLX:loras:csetiarcane-nfjinx-v1-6000.safetensors"
-  "Aitrepreneur/FLX:liveportrait:landmark.onnx"
-  "Aitrepreneur/FLX:sams:sam_vit_b_01ec64.pth"
-)
-
-echo "
-== Processing HF_MODEL_SETS =="
-for entry in "${HF_MODEL_SETS[@]}"; do
-  IFS=":" read -r REPO DIR FILES <<<"$entry"
-  # clone repo if no FILES
-  if [[ -z "$FILES" ]]; then
-    echo "Cloning full HF repo $REPO into models/$DIR..."
-    git_clone_or_update "$COMFY_DIR/models/$DIR" "https://huggingface.co/$REPO"
-  fi
-
-  # download specified files
-  if [[ -n "$FILES" ]]; then
-    TARGET="$COMFY_DIR/models/$DIR"
-    mkdir -p "$TARGET"
-    cd "$TARGET"
-    echo "Downloading files for $REPO into models/$DIR: $FILES"
-    download_hf_files "$REPO" $FILES
+  target="$CUSTOM_DIR/$name"
+  if git_clone_or_update "$target" "$url"; then
+    if [ -f "$target/requirements.txt" ]; then
+      echo "[INFO] Installing deps for $name..."
+      pip install --no-cache-dir -r "$target/requirements.txt" ||
+        echo "[WARNING] pip install failed for $name"
+    fi
   fi
 done
 
 # ---------------------------------------------
 # Done
 # ---------------------------------------------
-echo "
-Extensions and HF models initialization complete."
+echo
+echo "Extensions initialization complete."

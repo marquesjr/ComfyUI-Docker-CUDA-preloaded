@@ -44,3 +44,5 @@ docker volume rm comfyui_venv
 ```
 
 This should be enough to resolve future dependencies problems.
+
+Example use case: I was previously using a ubuntu22 base image, but I changed to ubuntu24 because some extensions break with python3.11 and they require python3.12. After I updated the Dockerfile I deleted the VENV volume so the Python would download newer pip packages there and then the extensions would re-resolve all dependencies again on container restart.

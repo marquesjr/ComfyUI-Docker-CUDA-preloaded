@@ -1,7 +1,4 @@
-FROM nvidia/cuda:12.6.0-devel-ubuntu22.04
-
-ARG UID=1000
-ARG GID=1000
+FROM nvidia/cuda:12.8.1-devel-ubuntu24.04
 
 ENV DEBIAN_FRONTEND=noninteractive \
     PYTHONUNBUFFERED=1 \
@@ -18,19 +15,13 @@ RUN chmod +x /usr/local/bin/init_models.sh
 RUN chmod +x /usr/local/bin/init_extensions.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
-# Create user and configure directories
-RUN groupadd -g $GID comfyuser && \
-    useradd -u $UID -g $GID -m -s /bin/bash comfyuser && \
-    mkdir -p ${COMFYUI_DIR} /venv && \
-    chown -R $UID:$GID /app /venv
-
 # Install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     git-lfs \
-    python3.11 \
-    python3.11-venv \
-    python3.11-dev \
+    python3.12 \
+    python3.12-venv \
+    python3.12-dev \
     libgl1 \
     libglib2.0-0 \
     libsm6 \
@@ -44,12 +35,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && fc-cache -f -v \
     && rm -rf /var/lib/apt/lists/*
 
-USER $UID:$GID
-ENV UID=${UID} \
-    GID=${GID}
+# make sure venv is writable by user "ubuntu"
+RUN mkdir -p ${COMFYUI_DIR} /venv && \
+    chown -R 1000:1000 /app /venv
+
+USER ubuntu
 
 # Setup virtual environment
-RUN python3.11 -m venv /venv
+RUN python3.12 -m venv /venv
 
 # Install PyTorch with CUDA 12.1
 RUN pip install --no-cache-dir \

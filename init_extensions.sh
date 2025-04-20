@@ -85,6 +85,8 @@ extensions=(
   "https://github.com/palant/image-resize-comfyui.git"
   "https://github.com/BlenderNeko/ComfyUI_Noise.git"
   "https://github.com/LEv145/images-grid-comfy-plugin.git"
+  "https://github.com/pythongosssss/ComfyUI-WD14-Tagger.git"
+  "https://github.com/cubiq/ComfyUI_IPAdapter_plus.git"
 )
 
 echo "\n== Cloning/updating extensions in $CUSTOM_DIR =="

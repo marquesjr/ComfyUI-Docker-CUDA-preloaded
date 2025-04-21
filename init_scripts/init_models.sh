@@ -23,6 +23,7 @@ LIST_NAMES=(
   TEXT_ENCODERS
   VAE
   CONTROLNET
+  PULID
 )
 
 # 2) Declare empty arrays for each

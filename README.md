@@ -55,3 +55,7 @@ Look for good workflows at https://openart.ai/workflows/home
 I have included a few working example at [workflows](workflows) including a text file next to each .json to explain any extra detail. But I have tested in this setup and I know they work.
 
 Please colaborate adding more good workflow like those.
+
+## Common Errors
+
+If you see a dialog box in ComfyUI complaining about "Header too Small", pay attention which Node and file. Then browse to the path, like "models/lora/flu1-canny-dev-lora.safetensors", let's say. It's probably 0 bytes because the download failed. Check the URL in models.conf and re-download to see if the URL is 404 Not Found.

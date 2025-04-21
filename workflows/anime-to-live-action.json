@@ -1,8 +1,8 @@
 {
   "id": "9cfd321f-b168-426d-a19c-1cdb5a48941c",
   "revision": 0,
-  "last_node_id": 29,
-  "last_link_id": 46,
+  "last_node_id": 39,
+  "last_link_id": 53,
   "nodes": [
     {
       "id": 16,
@@ -16,7 +16,7 @@
         364
       ],
       "flags": {},
-      "order": 7,
+      "order": 10,
       "mode": 0,
       "inputs": [
         {
@@ -69,49 +69,8 @@
         3,
         true,
         "",
-        882378651355120,
+        145616125261456,
         "randomize"
-      ]
-    },
-    {
-      "id": 18,
-      "type": "ShowText|pysssss",
-      "pos": [
-        -1480.6907958984375,
-        1302.48095703125
-      ],
-      "size": [
-        393.52886962890625,
-        148.19676208496094
-      ],
-      "flags": {},
-      "order": 11,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "text",
-          "type": "STRING",
-          "link": 24
-        }
-      ],
-      "outputs": [
-        {
-          "name": "STRING",
-          "shape": 6,
-          "type": "STRING",
-          "slot_index": 0,
-          "links": [
-            25
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfyui-custom-scripts",
-        "ver": "943e5cc7526c601600150867a80a02ab008415e7",
-        "Node name for S&R": "ShowText|pysssss"
-      },
-      "widgets_values": [
-        "The image is a digital illustration of a character from the Star Wars universe. The character is Boba Fett, the main antagonist of the Mandalorian series. He is wearing his iconic blue and gold armor with a red helmet and a gold chain around his neck. He has a large gun in his right hand, which is pink and grey in color. The background is a gradient of pink and purple, with small white dots scattered throughout. The overall style of the illustration is cartoon-like and vibrant."
       ]
     },
     {
@@ -126,7 +85,7 @@
         58
       ],
       "flags": {},
-      "order": 5,
+      "order": 8,
       "mode": 0,
       "inputs": [
         {
@@ -153,54 +112,6 @@
       },
       "widgets_values": [
         -2
-      ]
-    },
-    {
-      "id": 21,
-      "type": "CLIPTextEncode",
-      "pos": [
-        -1068.3515625,
-        1007.5316162109375
-      ],
-      "size": [
-        310.36187744140625,
-        88
-      ],
-      "flags": {},
-      "order": 14,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 26
-        },
-        {
-          "name": "text",
-          "type": "STRING",
-          "widget": {
-            "name": "text"
-          },
-          "link": 27
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "slot_index": 0,
-          "links": [
-            28
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.29",
-        "Node name for S&R": "CLIPTextEncode"
-      },
-      "widgets_values": [
-        ""
       ]
     },
     {
@@ -257,7 +168,7 @@
         46
       ],
       "flags": {},
-      "order": 19,
+      "order": 23,
       "mode": 0,
       "inputs": [
         {
@@ -301,7 +212,7 @@
         414.3529357910156
       ],
       "flags": {},
-      "order": 21,
+      "order": 25,
       "mode": 0,
       "inputs": [
         {
@@ -328,12 +239,12 @@
           {
             "name": "A",
             "selected": true,
-            "url": "/api/view?filename=rgthree.compare._temp_rpcos_00013_.png&type=temp&subfolder=&rand=0.5419063059621043"
+            "url": "/api/view?filename=rgthree.compare._temp_xtnuu_00047_.png&type=temp&subfolder=&rand=0.887359176099357"
           },
           {
             "name": "B",
             "selected": true,
-            "url": "/api/view?filename=rgthree.compare._temp_rpcos_00014_.png&type=temp&subfolder=&rand=0.4660687506905761"
+            "url": "/api/view?filename=rgthree.compare._temp_xtnuu_00048_.png&type=temp&subfolder=&rand=0.8812342310418456"
           }
         ]
       ]
@@ -350,7 +261,7 @@
         58
       ],
       "flags": {},
-      "order": 8,
+      "order": 11,
       "mode": 0,
       "inputs": [
         {
@@ -391,7 +302,7 @@
         262
       ],
       "flags": {},
-      "order": 18,
+      "order": 22,
       "mode": 0,
       "inputs": [
         {
@@ -431,7 +342,7 @@
         "Node name for S&R": "KSampler"
       },
       "widgets_values": [
-        813261997154756,
+        151064494142566,
         "randomize",
         25,
         6,
@@ -452,7 +363,7 @@
         186
       ],
       "flags": {},
-      "order": 16,
+      "order": 20,
       "mode": 0,
       "inputs": [
         {
@@ -523,7 +434,7 @@
         246
       ],
       "flags": {},
-      "order": 12,
+      "order": 15,
       "mode": 0,
       "inputs": [
         {
@@ -552,7 +463,7 @@
         246
       ],
       "flags": {},
-      "order": 10,
+      "order": 13,
       "mode": 0,
       "inputs": [
         {
@@ -581,7 +492,7 @@
         186
       ],
       "flags": {},
-      "order": 17,
+      "order": 21,
       "mode": 0,
       "inputs": [
         {
@@ -686,7 +597,7 @@
         58
       ],
       "flags": {},
-      "order": 6,
+      "order": 9,
       "mode": 0,
       "inputs": [
         {
@@ -713,63 +624,6 @@
       },
       "widgets_values": [
         512
-      ]
-    },
-    {
-      "id": 19,
-      "type": "Text Find and Replace",
-      "pos": [
-        -1069.4886474609375,
-        1273.252197265625
-      ],
-      "size": [
-        314.91888427734375,
-        165.03570556640625
-      ],
-      "flags": {},
-      "order": 13,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "text",
-          "type": "STRING",
-          "link": 25
-        }
-      ],
-      "outputs": [
-        {
-          "name": "result_text",
-          "type": "STRING",
-          "slot_index": 0,
-          "links": [
-            27,
-            35
-          ]
-        },
-        {
-          "name": "replacement_count_number",
-          "type": "NUMBER",
-          "links": null
-        },
-        {
-          "name": "replacement_count_float",
-          "type": "FLOAT",
-          "links": null
-        },
-        {
-          "name": "replacement_count_int",
-          "type": "INT",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "was-node-suite-comfyui",
-        "ver": "831199b898394c0385576d80628fce6b7931d317",
-        "Node name for S&R": "Text Find and Replace"
-      },
-      "widgets_values": [
-        "The image",
-        "RAW Photo, 4K, highres, extremely intricate, photorealistic, selective focus, best quality, photo, real, extremely detailed, amazing, fine detail, rich colors, hyperrealistic, lifelike texture, dramatic lighting, cinestill 800 tungsten, high quality, sharp focus, 8k, uhd, absurdres, portrait of a japanese"
       ]
     },
     {
@@ -822,84 +676,6 @@
       ]
     },
     {
-      "id": 26,
-      "type": "ShowText|pysssss",
-      "pos": [
-        -1064.9080810546875,
-        1484.993408203125
-      ],
-      "size": [
-        316.0834655761719,
-        163.76112365722656
-      ],
-      "flags": {},
-      "order": 15,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "text",
-          "type": "STRING",
-          "link": 35
-        }
-      ],
-      "outputs": [
-        {
-          "name": "STRING",
-          "shape": 6,
-          "type": "STRING",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfyui-custom-scripts",
-        "ver": "943e5cc7526c601600150867a80a02ab008415e7",
-        "Node name for S&R": "ShowText|pysssss"
-      },
-      "widgets_values": [
-        "RAW Photo, 4K, highres, extremely intricate, photorealistic, selective focus, best quality, photo, real, extremely detailed, amazing, fine detail, rich colors, hyperrealistic, lifelike texture, dramatic lighting, cinestill 800 tungsten, high quality, sharp focus, 8k, uhd, absurdres, portrait of a japanese is a digital illustration of a character from the Star Wars universe. The character is Boba Fett, the main antagonist of the Mandalorian series. He is wearing his iconic blue and gold armor with a red helmet and a gold chain around his neck. He has a large gun in his right hand, which is pink and grey in color. The background is a gradient of pink and purple, with small white dots scattered throughout. The overall style of the illustration is cartoon-like and vibrant."
-      ]
-    },
-    {
-      "id": 7,
-      "type": "CLIPTextEncode",
-      "pos": [
-        -1070.81591796875,
-        1107.88232421875
-      ],
-      "size": [
-        315.4892883300781,
-        120.9066390991211
-      ],
-      "flags": {},
-      "order": 9,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 6
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "slot_index": 0,
-          "links": [
-            10
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.29",
-        "Node name for S&R": "CLIPTextEncode"
-      },
-      "widgets_values": [
-        "embedding:BeyondSDXLv3, "
-      ]
-    },
-    {
       "id": 25,
       "type": "SaveImage",
       "pos": [
@@ -911,7 +687,7 @@
         424.6448059082031
       ],
       "flags": {},
-      "order": 20,
+      "order": 24,
       "mode": 0,
       "inputs": [
         {
@@ -1006,6 +782,378 @@
       "widgets_values": [
         "Illustration23 (2).png",
         "image"
+      ]
+    },
+    {
+      "id": 30,
+      "type": "JWStringConcat",
+      "pos": [
+        1773.6539306640625,
+        -771.6142578125
+      ],
+      "size": [
+        315,
+        82
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-various",
+        "ver": "5bd85aaf7616878471469c4ec7e11bbd0cef3bf2",
+        "Node name for S&R": "JWStringConcat"
+      },
+      "widgets_values": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": 18,
+      "type": "ShowText|pysssss",
+      "pos": [
+        -1478.4180908203125,
+        1357.02587890625
+      ],
+      "size": [
+        393.52886962890625,
+        148.19676208496094
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 24
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "slot_index": 0,
+          "links": [
+            25
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-custom-scripts",
+        "ver": "943e5cc7526c601600150867a80a02ab008415e7",
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "The image is a digital illustration of a character from the Star Wars universe. The character is Boba Fett, the main antagonist of the Mandalorian series. He is wearing his iconic blue and gold armor with a red helmet and a gold chain around his neck. He has a large sword in his right hand and a pink and green weapon in his left hand. The background is a gradient of pink and purple, giving the image a futuristic and sci-fi feel. The image is signed by the character in the bottom right corner."
+      ]
+    },
+    {
+      "id": 21,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -1069.4307861328125,
+        1013.3211669921875
+      ],
+      "size": [
+        310.36187744140625,
+        88
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 26
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 52
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            28
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.29",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 7,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -1068.34423828125,
+        1151.453369140625
+      ],
+      "size": [
+        315.4892883300781,
+        120.9066390991211
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 6
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            10
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.29",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "embedding:BeyondSDXLv3"
+      ]
+    },
+    {
+      "id": 19,
+      "type": "Text Find and Replace",
+      "pos": [
+        -1067.046630859375,
+        1355.994384765625
+      ],
+      "size": [
+        314.91888427734375,
+        165.03570556640625
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 25
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result_text",
+          "type": "STRING",
+          "slot_index": 0,
+          "links": [
+            35
+          ]
+        },
+        {
+          "name": "replacement_count_number",
+          "type": "NUMBER",
+          "links": null
+        },
+        {
+          "name": "replacement_count_float",
+          "type": "FLOAT",
+          "links": null
+        },
+        {
+          "name": "replacement_count_int",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "was-node-suite-comfyui",
+        "ver": "831199b898394c0385576d80628fce6b7931d317",
+        "Node name for S&R": "Text Find and Replace"
+      },
+      "widgets_values": [
+        "The image",
+        "RAW Photo, 4K, highres, extremely intricate, photorealistic, selective focus, best quality, photo, real, extremely detailed, amazing, fine detail, rich colors, hyperrealistic, lifelike texture, dramatic lighting, cinestill 800 tungsten, high quality, sharp focus, 8k, uhd, absurdres, portrait of a japanese"
+      ]
+    },
+    {
+      "id": 26,
+      "type": "ShowText|pysssss",
+      "pos": [
+        -1409.5494384765625,
+        1577.218017578125
+      ],
+      "size": [
+        316.0834655761719,
+        163.76112365722656
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 35
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": [
+            50
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-custom-scripts",
+        "ver": "943e5cc7526c601600150867a80a02ab008415e7",
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "RAW Photo, 4K, highres, extremely intricate, photorealistic, selective focus, best quality, photo, real, extremely detailed, amazing, fine detail, rich colors, hyperrealistic, lifelike texture, dramatic lighting, cinestill 800 tungsten, high quality, sharp focus, 8k, uhd, absurdres, portrait of a japanese is a digital illustration of a character from the Star Wars universe. The character is Boba Fett, the main antagonist of the Mandalorian series. He is wearing his iconic blue and gold armor with a red helmet and a gold chain around his neck. He has a large sword in his right hand and a pink and green weapon in his left hand. The background is a gradient of pink and purple, giving the image a futuristic and sci-fi feel. RAW Photo, 4K, highres, extremely intricate, photorealistic, selective focus, best quality, photo, real, extremely detailed, amazing, fine detail, rich colors, hyperrealistic, lifelike texture, dramatic lighting, cinestill 800 tungsten, high quality, sharp focus, 8k, uhd, absurdres, portrait of a japanese is signed by the character in the bottom right corner."
+      ]
+    },
+    {
+      "id": 35,
+      "type": "Text Concatenate",
+      "pos": [
+        -1059.562744140625,
+        1588.226318359375
+      ],
+      "size": [
+        315,
+        142
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text_a",
+          "shape": 7,
+          "type": "STRING",
+          "link": 50
+        },
+        {
+          "name": "text_b",
+          "shape": 7,
+          "type": "STRING",
+          "link": 53
+        },
+        {
+          "name": "text_c",
+          "shape": 7,
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "text_d",
+          "shape": 7,
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            52
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "was-node-suite-comfyui",
+        "ver": "831199b898394c0385576d80628fce6b7931d317",
+        "Node name for S&R": "Text Concatenate"
+      },
+      "widgets_values": [
+        ", ",
+        "true"
+      ]
+    },
+    {
+      "id": 39,
+      "type": "Note",
+      "pos": [
+        -1436.1436767578125,
+        1802.231689453125
+      ],
+      "size": [
+        140,
+        60
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "type extra prompt here"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 38,
+      "type": "DF_Text_Box",
+      "pos": [
+        -1278.2802734375,
+        1797.0819091796875
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            53
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "derfuu_comfyui_moddednodes",
+        "ver": "d0905bed31249f2bd0814c67585cf4fe3c77c015",
+        "Node name for S&R": "DF_Text_Box"
+      },
+      "widgets_values": [
+        "all blue clothing, shiny blue armor plates on the chest and belly, dark blue helmet, black visor surrounded by vibrant red stripe, gold shoulder plates, gold hawk shoulder on left arm, dark matte black gun in front, photo realistic, realistic, dark night surroundings, gold badge with chains on the chest, gold badge on top of the helmet, dark green gloves, dark green accessory on the back, dark green hands, cyberpunk aesthetic, judge dredd colors"
       ]
     }
   ],
@@ -1139,14 +1287,6 @@
       "CLIP"
     ],
     [
-      27,
-      19,
-      0,
-      21,
-      1,
-      "STRING"
-    ],
-    [
       28,
       21,
       0,
@@ -1249,18 +1389,43 @@
       5,
       0,
       "CLIP"
+    ],
+    [
+      50,
+      26,
+      0,
+      35,
+      0,
+      "STRING"
+    ],
+    [
+      52,
+      35,
+      0,
+      21,
+      1,
+      "STRING"
+    ],
+    [
+      53,
+      38,
+      0,
+      35,
+      1,
+      "STRING"
     ]
   ],
   "groups": [],
   "config": {},
   "extra": {
     "ds": {
-      "scale": 1.1,
+      "scale": 2.357947691000002,
       "offset": [
-        -50.71459074750943,
-        -795.29299147276
+        -371.3596423089189,
+        -848.2153106613953
       ]
     },
+    "frontendVersion": "1.16.9",
     "node_versions": {
       "ComfyUI-Florence2": "dffd12506d50f0540b8a7f4b36a05d4fb5fed2de",
       "ComfyUI-Custom-Scripts": "bc8922deff73f59311c05cef27b9d4caaf43e87b",
@@ -1270,7 +1435,6 @@
       "was-node-suite-comfyui": "056badacda52e88d29d6a65f9509cd3115ace0f2"
     },
     "ue_links": [],
-    "frontendVersion": "1.16.9",
     "VHS_latentpreview": false,
     "VHS_latentpreviewrate": 0,
     "VHS_MetadataImage": true,

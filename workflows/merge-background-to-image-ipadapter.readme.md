@@ -1,0 +1,12 @@
+sams: sam_vit_b_01ec64 (included)
+ultralytics: segm/person_yolov8m (included)
+model: majicmix-realistic-v7 (included)
+vae: vae-ft-mse-840000 (included)
+lora: lcm-lora-sdv1-5 (included)
+ipadapter:
+- ip-adapter-plus_sd15 (included)
+- ip-adapter-full-face_sd15 (included)
+clip_vision: CLIP-ViT-H-14-laion2B (included)
+controlnet: control_v11p_sd15_lineart (included)
+swap_model: inswapper_128 (included)
+face_restore: codeformer-v0.1.0 (included)

@@ -1,0 +1,1599 @@
+{
+  "id": "841d0491-7768-4859-b477-406bd2048e3f",
+  "revision": 0,
+  "last_node_id": 17,
+  "last_link_id": 20,
+  "nodes": [
+    {
+      "id": 4,
+      "type": "workflow>outpaintpar",
+      "pos": [
+        873.2133178710938,
+        -20.265090942382812
+      ],
+      "size": [
+        430.8000183105469,
+        274
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 8
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 9
+        },
+        {
+          "name": "pixels",
+          "type": "IMAGE",
+          "link": 3
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 4
+        },
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 11
+        },
+        {
+          "name": "destination",
+          "type": "IMAGE",
+          "link": 10
+        },
+        {
+          "name": "ImageCompositeMasked mask",
+          "type": "MASK",
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            13
+          ]
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "links": [
+            14
+          ]
+        },
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": [
+            15
+          ]
+        },
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            18,
+            20
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "workflow>outpaintpar"
+      },
+      "widgets_values": [
+        "ae.safetensors",
+        true,
+        0,
+        0,
+        false
+      ]
+    },
+    {
+      "id": 3,
+      "type": "PreviewImage",
+      "pos": [
+        449.65924072265625,
+        183.5984649658203
+      ],
+      "size": [
+        316.81817626953125,
+        258
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 2
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.29",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 5,
+      "type": "workflow>Load Model",
+      "pos": [
+        935.1972045898438,
+        308.449951171875
+      ],
+      "size": [
+        315,
+        82
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            12
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "workflow>Load Model"
+      },
+      "widgets_values": [
+        "flux1-fill-dev_fp8.safetensors",
+        "default"
+      ]
+    },
+    {
+      "id": 9,
+      "type": "KSampler",
+      "pos": [
+        939.9882202148438,
+        447.07647705078125
+      ],
+      "size": [
+        315,
+        262
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 12
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 13
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 14
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 15
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            11
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.29",
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        525630863999910,
+        "randomize",
+        20,
+        1,
+        "euler",
+        "normal",
+        1
+      ]
+    },
+    {
+      "id": 13,
+      "type": "PreviewImage",
+      "pos": [
+        904.4200439453125,
+        778.8841552734375
+      ],
+      "size": [
+        418.4898376464844,
+        441.96795654296875
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 20
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.29",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 11,
+      "type": "ImageUpscaleWithModel",
+      "pos": [
+        1431.5302734375,
+        328.60626220703125
+      ],
+      "size": [
+        277.97576904296875,
+        48.44015121459961
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "upscale_model",
+          "type": "UPSCALE_MODEL",
+          "link": 17
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 18
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            19
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.29",
+        "Node name for S&R": "ImageUpscaleWithModel"
+      }
+    },
+    {
+      "id": 14,
+      "type": "Note",
+      "pos": [
+        48.808738708496094,
+        735.7279663085938
+      ],
+      "size": [
+        300,
+        90
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "If the image is too large, it may take too long. Test with different resizing"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 16,
+      "type": "Note",
+      "pos": [
+        1289.8555908203125,
+        593.1659545898438
+      ],
+      "size": [
+        210,
+        90.99174499511719
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "steps and cfg affect the outpainting, play with those"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 1,
+      "type": "LoadAndResizeImage",
+      "pos": [
+        38.45081329345703,
+        115.35682678222656
+      ],
+      "size": [
+        342.5999755859375,
+        566
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            1
+          ]
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": null
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "image_path",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-kjnodes",
+        "ver": "3e3a1a8aac61dc4515f6a7da74e026f05a80299f",
+        "Node name for S&R": "LoadAndResizeImage"
+      },
+      "widgets_values": [
+        "IMG_20180604_115804 (1).jpg",
+        false,
+        1000,
+        1000,
+        1,
+        true,
+        2,
+        "alpha",
+        "",
+        "image"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "ImagePadForOutpaint",
+      "pos": [
+        448.5227966308594,
+        -51.47724533081055
+      ],
+      "size": [
+        315,
+        174
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            2,
+            3,
+            10
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            4,
+            5
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.29",
+        "Node name for S&R": "ImagePadForOutpaint"
+      },
+      "widgets_values": [
+        304,
+        0,
+        0,
+        0,
+        80
+      ]
+    },
+    {
+      "id": 15,
+      "type": "Note",
+      "pos": [
+        482.0040283203125,
+        -251.87564086914062
+      ],
+      "size": [
+        236.4187469482422,
+        99.25621032714844
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "paddng is dependent on image resolution. check the resize. I believe the smaller the image, less halucinations. we can upscale later"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 12,
+      "type": "UpscaleModelLoader",
+      "pos": [
+        1409.401611328125,
+        202.04261779785156
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "UPSCALE_MODEL",
+          "type": "UPSCALE_MODEL",
+          "links": [
+            17
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.29",
+        "Node name for S&R": "UpscaleModelLoader"
+      },
+      "widgets_values": [
+        "SwinIR_4x.pth"
+      ]
+    },
+    {
+      "id": 7,
+      "type": "workflow>Positive Prompt",
+      "pos": [
+        431.11151123046875,
+        622.173583984375
+      ],
+      "size": [
+        371.1617126464844,
+        241.03921508789062
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 6
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            8
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "workflow>Positive Prompt"
+      },
+      "widgets_values": [
+        "lincoln memorial, washinton dc, cloudy day, crowded, sharp image, crisp image, well defined crowd, well defined green field",
+        3.5
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 17,
+      "type": "Note",
+      "pos": [
+        1539.75341796875,
+        53.19999694824219
+      ],
+      "size": [
+        210,
+        88
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "test different upscale models for better results"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 10,
+      "type": "SaveImage",
+      "pos": [
+        1788.013671875,
+        -2.559208393096924
+      ],
+      "size": [
+        1066.3275146484375,
+        1116.6158447265625
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 19
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.29",
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "upscaled"
+      ]
+    },
+    {
+      "id": 8,
+      "type": "workflow>Negative Prompt",
+      "pos": [
+        433.6557312011719,
+        923.7542724609375
+      ],
+      "size": [
+        366.9580383300781,
+        144.3309326171875
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            9
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "workflow>Negative Prompt"
+      },
+      "widgets_values": [
+        "statue, monuments, dirty, bad proportions, blurry people",
+        3.5
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 6,
+      "type": "DualCLIPLoader",
+      "pos": [
+        454.67724609375,
+        1135.6160888671875
+      ],
+      "size": [
+        315,
+        130
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            6,
+            7
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.29",
+        "Node name for S&R": "DualCLIPLoader"
+      },
+      "widgets_values": [
+        "clip_l.safetensors",
+        "t5xxl_fp16.safetensors",
+        "flux",
+        "default"
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "IMAGE"
+    ],
+    [
+      2,
+      2,
+      0,
+      3,
+      0,
+      "IMAGE"
+    ],
+    [
+      3,
+      2,
+      0,
+      4,
+      2,
+      "IMAGE"
+    ],
+    [
+      4,
+      2,
+      1,
+      4,
+      3,
+      "MASK"
+    ],
+    [
+      5,
+      2,
+      1,
+      4,
+      6,
+      "MASK"
+    ],
+    [
+      6,
+      6,
+      0,
+      7,
+      0,
+      "CLIP"
+    ],
+    [
+      7,
+      6,
+      0,
+      8,
+      0,
+      "CLIP"
+    ],
+    [
+      8,
+      7,
+      0,
+      4,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      9,
+      8,
+      0,
+      4,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      10,
+      2,
+      0,
+      4,
+      5,
+      "IMAGE"
+    ],
+    [
+      11,
+      9,
+      0,
+      4,
+      4,
+      "LATENT"
+    ],
+    [
+      12,
+      5,
+      0,
+      9,
+      0,
+      "MODEL"
+    ],
+    [
+      13,
+      4,
+      0,
+      9,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      14,
+      4,
+      1,
+      9,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      15,
+      4,
+      2,
+      9,
+      3,
+      "LATENT"
+    ],
+    [
+      17,
+      12,
+      0,
+      11,
+      0,
+      "UPSCALE_MODEL"
+    ],
+    [
+      18,
+      4,
+      3,
+      11,
+      1,
+      "IMAGE"
+    ],
+    [
+      19,
+      11,
+      0,
+      10,
+      0,
+      "IMAGE"
+    ],
+    [
+      20,
+      4,
+      3,
+      13,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Outpainting Padding",
+      "bounding": [
+        417.7445983886719,
+        -137.50477600097656,
+        385.45452880859375,
+        620.9091186523438
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "Text Prompts",
+      "bounding": [
+        410.1554260253906,
+        535.8579711914062,
+        407.8193359375,
+        780.7716674804688
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 3,
+      "title": "Outpainting Process",
+      "bounding": [
+        854.6004028320312,
+        -134.18887329101562,
+        486.50360107421875,
+        1289.1025390625
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 4,
+      "title": "Upscaling",
+      "bounding": [
+        1386.0701904296875,
+        101.77530670166016,
+        354.73443603515625,
+        322.7966003417969
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.6830134553650706,
+      "offset": [
+        -54.99204219387528,
+        47.37342371375681
+      ]
+    },
+    "ue_links": [],
+    "groupNodes": {
+      "outpaintpar": {
+        "nodes": [
+          {
+            "id": -1,
+            "type": "VAELoader",
+            "pos": [
+              -1428.416748046875,
+              12807.39453125
+            ],
+            "size": [
+              315,
+              58
+            ],
+            "flags": {},
+            "order": 205,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "vae_name",
+                "localized_name": "vae_name",
+                "type": "COMBO",
+                "widget": {
+                  "name": "vae_name"
+                },
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "name": "VAE",
+                "type": "VAE",
+                "links": [],
+                "slot_index": 0,
+                "localized_name": "VAE"
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "VAELoader"
+            },
+            "widgets_values": [
+              "ae.safetensors"
+            ],
+            "index": 0
+          },
+          {
+            "id": -1,
+            "type": "InpaintModelConditioning",
+            "pos": [
+              -1407.1729736328125,
+              12568.673828125
+            ],
+            "size": [
+              302.4000244140625,
+              138
+            ],
+            "flags": {},
+            "order": 345,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "positive",
+                "type": "CONDITIONING",
+                "link": null,
+                "localized_name": "positive"
+              },
+              {
+                "name": "negative",
+                "type": "CONDITIONING",
+                "link": null,
+                "localized_name": "negative"
+              },
+              {
+                "name": "vae",
+                "type": "VAE",
+                "link": null,
+                "localized_name": "vae"
+              },
+              {
+                "name": "pixels",
+                "type": "IMAGE",
+                "link": null,
+                "localized_name": "pixels"
+              },
+              {
+                "name": "mask",
+                "type": "MASK",
+                "link": null,
+                "localized_name": "mask"
+              },
+              {
+                "name": "noise_mask",
+                "localized_name": "noise_mask",
+                "type": "BOOLEAN",
+                "widget": {
+                  "name": "noise_mask"
+                },
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "name": "positive",
+                "type": "CONDITIONING",
+                "links": [],
+                "slot_index": 0,
+                "localized_name": "positive"
+              },
+              {
+                "name": "negative",
+                "type": "CONDITIONING",
+                "links": [],
+                "slot_index": 1,
+                "localized_name": "negative"
+              },
+              {
+                "name": "latent",
+                "type": "LATENT",
+                "links": [],
+                "slot_index": 2,
+                "localized_name": "latent"
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "InpaintModelConditioning"
+            },
+            "widgets_values": [
+              false
+            ],
+            "index": 1
+          },
+          {
+            "id": -1,
+            "type": "VAEDecode",
+            "pos": [
+              -1385.2054443359375,
+              12922.294921875
+            ],
+            "size": [
+              210,
+              46
+            ],
+            "flags": {},
+            "order": 368,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "samples",
+                "type": "LATENT",
+                "link": null,
+                "localized_name": "samples"
+              },
+              {
+                "name": "vae",
+                "type": "VAE",
+                "link": null,
+                "localized_name": "vae"
+              }
+            ],
+            "outputs": [
+              {
+                "name": "IMAGE",
+                "type": "IMAGE",
+                "links": [],
+                "slot_index": 0,
+                "localized_name": "IMAGE"
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "VAEDecode"
+            },
+            "index": 2,
+            "widgets_values": []
+          },
+          {
+            "id": -1,
+            "type": "ImageCompositeMasked",
+            "pos": [
+              -1306.2513427734375,
+              13064.3447265625
+            ],
+            "size": [
+              315,
+              146
+            ],
+            "flags": {},
+            "order": 369,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "destination",
+                "type": "IMAGE",
+                "link": null,
+                "localized_name": "destination"
+              },
+              {
+                "name": "source",
+                "type": "IMAGE",
+                "link": null,
+                "localized_name": "source"
+              },
+              {
+                "name": "mask",
+                "type": "MASK",
+                "link": null,
+                "shape": 7,
+                "localized_name": "mask"
+              },
+              {
+                "name": "x",
+                "localized_name": "x",
+                "type": "INT",
+                "widget": {
+                  "name": "x"
+                },
+                "link": null
+              },
+              {
+                "name": "y",
+                "localized_name": "y",
+                "type": "INT",
+                "widget": {
+                  "name": "y"
+                },
+                "link": null
+              },
+              {
+                "name": "resize_source",
+                "localized_name": "resize_source",
+                "type": "BOOLEAN",
+                "widget": {
+                  "name": "resize_source"
+                },
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "name": "IMAGE",
+                "type": "IMAGE",
+                "links": [],
+                "slot_index": 0,
+                "localized_name": "IMAGE"
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "ImageCompositeMasked"
+            },
+            "widgets_values": [
+              0,
+              0,
+              false
+            ],
+            "index": 3
+          }
+        ],
+        "links": [
+          [
+            null,
+            0,
+            1,
+            0,
+            1322,
+            "CONDITIONING"
+          ],
+          [
+            null,
+            0,
+            1,
+            1,
+            1303,
+            "CONDITIONING"
+          ],
+          [
+            0,
+            0,
+            1,
+            2,
+            1306,
+            "VAE"
+          ],
+          [
+            null,
+            0,
+            1,
+            3,
+            1319,
+            "IMAGE"
+          ],
+          [
+            null,
+            1,
+            1,
+            4,
+            1319,
+            "MASK"
+          ],
+          [
+            null,
+            0,
+            2,
+            0,
+            1317,
+            "LATENT"
+          ],
+          [
+            0,
+            0,
+            2,
+            1,
+            1306,
+            "VAE"
+          ],
+          [
+            null,
+            0,
+            3,
+            0,
+            1319,
+            "IMAGE"
+          ],
+          [
+            2,
+            0,
+            3,
+            1,
+            1304,
+            "IMAGE"
+          ],
+          [
+            null,
+            1,
+            3,
+            2,
+            1319,
+            "MASK"
+          ]
+        ],
+        "external": [
+          [
+            1,
+            0,
+            "CONDITIONING"
+          ],
+          [
+            1,
+            1,
+            "CONDITIONING"
+          ],
+          [
+            1,
+            2,
+            "LATENT"
+          ],
+          [
+            3,
+            0,
+            "IMAGE"
+          ]
+        ]
+      },
+      "Load Model": {
+        "nodes": [
+          {
+            "id": -1,
+            "type": "UNETLoader",
+            "pos": [
+              -2125.478515625,
+              12364.8203125
+            ],
+            "size": [
+              315,
+              82
+            ],
+            "flags": {},
+            "order": 205,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "unet_name",
+                "localized_name": "unet_name",
+                "type": "COMBO",
+                "widget": {
+                  "name": "unet_name"
+                },
+                "link": null
+              },
+              {
+                "name": "weight_dtype",
+                "localized_name": "weight_dtype",
+                "type": "COMBO",
+                "widget": {
+                  "name": "weight_dtype"
+                },
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "name": "MODEL",
+                "type": "MODEL",
+                "links": [],
+                "slot_index": 0,
+                "localized_name": "MODEL"
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "UNETLoader"
+            },
+            "widgets_values": [
+              "flux1-fill-dev_fp8.safetensors",
+              "default"
+            ],
+            "index": 0
+          },
+          {
+            "id": -1,
+            "type": "DifferentialDiffusion",
+            "pos": [
+              -1674.220458984375,
+              12446.4541015625
+            ],
+            "size": [
+              277.20001220703125,
+              26
+            ],
+            "flags": {},
+            "order": 253,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "model",
+                "type": "MODEL",
+                "link": null,
+                "localized_name": "model"
+              }
+            ],
+            "outputs": [
+              {
+                "name": "MODEL",
+                "type": "MODEL",
+                "links": [],
+                "slot_index": 0,
+                "localized_name": "MODEL"
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "DifferentialDiffusion"
+            },
+            "index": 1,
+            "widgets_values": []
+          }
+        ],
+        "links": [
+          [
+            0,
+            0,
+            1,
+            0,
+            1315,
+            "MODEL"
+          ]
+        ],
+        "external": [
+          [
+            1,
+            0,
+            "MODEL"
+          ]
+        ]
+      },
+      "Positive Prompt": {
+        "nodes": [
+          {
+            "id": -1,
+            "type": "CLIPTextEncode",
+            "pos": {
+              "0": 115,
+              "1": 4180
+            },
+            "size": {
+              "0": 422.84503173828125,
+              "1": 164.31304931640625
+            },
+            "flags": {},
+            "order": 87,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "clip",
+                "type": "CLIP",
+                "link": null,
+                "localized_name": "clip"
+              },
+              {
+                "name": "text",
+                "localized_name": "text",
+                "type": "STRING",
+                "widget": {
+                  "name": "text"
+                },
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "name": "CONDITIONING",
+                "type": "CONDITIONING",
+                "links": [],
+                "slot_index": 0,
+                "localized_name": "CONDITIONING"
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "CLIPTextEncode"
+            },
+            "widgets_values": [
+              "Vintage low-poly style with coarse textures, reminiscent of PS1 and PS2 era gaming graphics. a rugged, heavy-duty truck"
+            ],
+            "index": 0
+          },
+          {
+            "id": -1,
+            "type": "FluxGuidance",
+            "pos": {
+              "0": 735.5810546875,
+              "1": 4220.24267578125
+            },
+            "size": {
+              "0": 317.4000244140625,
+              "1": 58
+            },
+            "flags": {},
+            "order": 120,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "conditioning",
+                "type": "CONDITIONING",
+                "link": null,
+                "localized_name": "conditioning"
+              },
+              {
+                "name": "guidance",
+                "localized_name": "guidance",
+                "type": "FLOAT",
+                "widget": {
+                  "name": "guidance"
+                },
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "name": "CONDITIONING",
+                "type": "CONDITIONING",
+                "links": [],
+                "slot_index": 0,
+                "localized_name": "CONDITIONING"
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "FluxGuidance"
+            },
+            "widgets_values": [
+              3.5
+            ],
+            "index": 1
+          }
+        ],
+        "links": [
+          [
+            0,
+            0,
+            1,
+            0,
+            353,
+            "CONDITIONING"
+          ]
+        ],
+        "external": []
+      },
+      "Negative Prompt": {
+        "nodes": [
+          {
+            "id": -1,
+            "type": "CLIPTextEncode",
+            "pos": {
+              "0": -283,
+              "1": 4427
+            },
+            "size": {
+              "0": 422.84503173828125,
+              "1": 164.31304931640625
+            },
+            "flags": {},
+            "order": 89,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "clip",
+                "type": "CLIP",
+                "link": null,
+                "localized_name": "clip"
+              },
+              {
+                "name": "text",
+                "localized_name": "text",
+                "type": "STRING",
+                "widget": {
+                  "name": "text"
+                },
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "name": "CONDITIONING",
+                "type": "CONDITIONING",
+                "links": [],
+                "slot_index": 0,
+                "localized_name": "CONDITIONING"
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "CLIPTextEncode"
+            },
+            "widgets_values": [
+              ""
+            ],
+            "index": 0
+          },
+          {
+            "id": -1,
+            "type": "FluxGuidance",
+            "pos": {
+              "0": 584,
+              "1": 4333
+            },
+            "size": {
+              "0": 317.4000244140625,
+              "1": 58
+            },
+            "flags": {},
+            "order": 122,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "conditioning",
+                "type": "CONDITIONING",
+                "link": null,
+                "localized_name": "conditioning"
+              },
+              {
+                "name": "guidance",
+                "localized_name": "guidance",
+                "type": "FLOAT",
+                "widget": {
+                  "name": "guidance"
+                },
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "name": "CONDITIONING",
+                "type": "CONDITIONING",
+                "links": [],
+                "slot_index": 0,
+                "localized_name": "CONDITIONING"
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "FluxGuidance"
+            },
+            "widgets_values": [
+              4
+            ],
+            "index": 1
+          }
+        ],
+        "links": [
+          [
+            0,
+            0,
+            1,
+            0,
+            355,
+            "CONDITIONING"
+          ]
+        ],
+        "external": []
+      }
+    },
+    "frontendVersion": "1.16.9",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

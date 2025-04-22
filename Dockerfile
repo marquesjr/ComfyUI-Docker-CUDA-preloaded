@@ -56,6 +56,9 @@ RUN pip install --no-cache-dir \
 RUN git clone https://github.com/comfyanonymous/ComfyUI ${COMFYUI_DIR}
 WORKDIR ${COMFYUI_DIR}
 
+# git checkout to last known stable tag
+RUN git fetch --tags && git checkout $(git describe --tags `git rev-list --tags --max-count=1`)
+
 # Install requirements
 RUN pip install --no-cache-dir -r requirements.txt && \
     pip install --no-cache-dir \

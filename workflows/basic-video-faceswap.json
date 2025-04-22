@@ -1,543 +1,241 @@
 {
-  "id": "423ce678-8917-4687-a25f-42c2963b675c",
-  "revision": 0,
-  "last_node_id": 103,
-  "last_link_id": 135,
+  "last_node_id": 22,
+  "last_link_id": 24,
   "nodes": [
     {
-      "id": 51,
-      "type": "VHS_LoadVideo",
-      "pos": [
-        455.8927001953125,
-        839.6954345703125
-      ],
-      "size": [
-        250.5,
-        94
-      ],
-      "flags": {
-        "collapsed": true
-      },
-      "order": 0,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "meta_batch",
-          "shape": 7,
-          "type": "VHS_BatchManager",
-          "link": null
-        },
-        {
-          "name": "vae",
-          "shape": 7,
-          "type": "VAE",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": null
-        },
-        {
-          "name": "frame_count",
-          "type": "INT",
-          "links": null
-        },
-        {
-          "name": "audio",
-          "type": "AUDIO",
-          "links": null
-        },
-        {
-          "name": "video_info",
-          "type": "VHS_VIDEOINFO",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfyui-videohelpersuite",
-        "ver": "598e181e97d50174cc18677dfcdaa7b9b6ec0cb2",
-        "Node name for S&R": "VHS_LoadVideo"
-      },
-      "widgets_values": {
-        "video": "0321 (1) (1).mp4",
-        "force_rate": 0,
-        "custom_width": 0,
-        "custom_height": 0,
-        "frame_load_cap": 0,
-        "skip_first_frames": 0,
-        "select_every_nth": 1,
-        "format": "AnimateDiff",
-        "choose video to upload": "image",
-        "videopreview": {
-          "hidden": false,
-          "paused": false,
-          "params": {
-            "frame_load_cap": 0,
-            "skip_first_frames": 0,
-            "force_rate": 0,
-            "filename": "0321 (1) (1).mp4",
-            "type": "input",
-            "format": "video/mp4",
-            "select_every_nth": 1
-          }
-        }
-      }
-    },
-    {
-      "id": 70,
-      "type": "Reroute",
-      "pos": [
-        415.1929626464844,
-        89.64384460449219
-      ],
-      "size": [
-        149.1999969482422,
-        26
-      ],
-      "flags": {},
-      "order": 9,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 84
-        }
-      ],
-      "outputs": [
-        {
-          "name": "UPSCALE_MODEL",
-          "type": "UPSCALE_MODEL",
-          "slot_index": 0,
-          "links": [
-            85
-          ]
-        }
-      ],
-      "properties": {
-        "showOutputText": true,
-        "horizontal": false
-      },
-      "color": "#322",
-      "bgcolor": "#533"
-    },
-    {
-      "id": 71,
-      "type": "Reroute",
-      "pos": [
-        655.1929931640625,
-        89.64384460449219
-      ],
-      "size": [
-        149.1999969482422,
-        26
-      ],
-      "flags": {},
-      "order": 14,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 85
-        }
-      ],
-      "outputs": [
-        {
-          "name": "UPSCALE_MODEL",
-          "type": "UPSCALE_MODEL",
-          "slot_index": 0,
-          "links": [
-            86
-          ]
-        }
-      ],
-      "properties": {
-        "showOutputText": true,
-        "horizontal": false
-      },
-      "color": "#322",
-      "bgcolor": "#533"
-    },
-    {
-      "id": 72,
-      "type": "Reroute",
-      "pos": [
-        1194.112060546875,
-        1489.5565185546875
-      ],
-      "size": [
-        149.1999969482422,
-        26
-      ],
-      "flags": {},
-      "order": 10,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 87
-        }
-      ],
-      "outputs": [
-        {
-          "name": "UPSCALE_MODEL",
-          "type": "UPSCALE_MODEL",
-          "slot_index": 0,
-          "links": [
-            88
-          ]
-        }
-      ],
-      "properties": {
-        "showOutputText": true,
-        "horizontal": false
-      },
-      "color": "#223",
-      "bgcolor": "#335"
-    },
-    {
-      "id": 73,
-      "type": "Reroute",
-      "pos": [
-        1810.9642333984375,
-        1485.0787353515625
-      ],
-      "size": [
-        149.1999969482422,
-        26
-      ],
-      "flags": {},
-      "order": 15,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 88
-        }
-      ],
-      "outputs": [
-        {
-          "name": "UPSCALE_MODEL",
-          "type": "UPSCALE_MODEL",
-          "slot_index": 0,
-          "links": [
-            89
-          ]
-        }
-      ],
-      "properties": {
-        "showOutputText": true,
-        "horizontal": false
-      },
-      "color": "#223",
-      "bgcolor": "#335"
-    },
-    {
-      "id": 52,
-      "type": "Reroute",
-      "pos": [
-        694,
-        806
-      ],
-      "size": [
-        82,
-        26
-      ],
-      "flags": {},
-      "order": 12,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 135
-        }
-      ],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "slot_index": 0,
-          "links": [
-            61,
-            62
-          ]
-        }
-      ],
-      "properties": {
-        "showOutputText": true,
-        "horizontal": false
-      }
-    },
-    {
-      "id": 26,
-      "type": "ReActorRestoreFace",
-      "pos": [
-        1164,
-        63
-      ],
-      "size": [
-        315,
-        130
-      ],
-      "flags": {},
-      "order": 17,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 62
-        }
-      ],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "slot_index": 0,
-          "links": [
-            28
-          ]
-        }
-      ],
-      "properties": {
-        "aux_id": "comfyui-reactor-node.git",
-        "ver": "976a8c51bab55fe5443392566ab4e6a9315eed6a",
-        "Node name for S&R": "ReActorRestoreFace"
-      },
-      "widgets_values": [
-        "retinaface_resnet50",
-        "GFPGANv1.4.pth",
-        1,
-        0.5
-      ]
-    },
-    {
-      "id": 60,
-      "type": "PreviewImage",
-      "pos": [
-        1524,
-        722
-      ],
-      "size": [
-        622.6705932617188,
-        73.52371215820312
-      ],
-      "flags": {},
-      "order": 25,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 124
-        }
-      ],
-      "outputs": [],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.29",
-        "Node name for S&R": "PreviewImage"
-      },
-      "widgets_values": []
-    },
-    {
-      "id": 59,
-      "type": "ImageScaleBy",
-      "pos": [
-        1167,
-        1057
-      ],
-      "size": [
-        315,
-        82
-      ],
-      "flags": {},
-      "order": 26,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 129
-        }
-      ],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "slot_index": 0,
-          "links": [
-            130
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.29",
-        "Node name for S&R": "ImageScaleBy"
-      },
-      "widgets_values": [
-        "nearest-exact",
-        0.5
-      ]
-    },
-    {
-      "id": 44,
-      "type": "ImageUpscaleWithModel",
-      "pos": [
-        1166,
-        961
-      ],
-      "size": [
-        241.79998779296875,
-        46
-      ],
-      "flags": {
-        "collapsed": false
-      },
-      "order": 23,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "upscale_model",
-          "type": "UPSCALE_MODEL",
-          "link": 89
-        },
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 128
-        }
-      ],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "slot_index": 0,
-          "links": [
-            78,
-            124,
-            129
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.29",
-        "Node name for S&R": "ImageUpscaleWithModel"
-      },
-      "widgets_values": []
-    },
-    {
-      "id": 46,
+      "id": 6,
       "type": "RIFE VFI",
-      "pos": [
-        1161,
-        721
-      ],
-      "size": [
-        319.20001220703125,
-        198
-      ],
-      "flags": {
-        "collapsed": false
+      "pos": {
+        "0": 570,
+        "1": 290
       },
-      "order": 22,
-      "mode": 4,
+      "size": {
+        "0": 260,
+        "1": 198
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
       "inputs": [
         {
           "name": "frames",
           "type": "IMAGE",
-          "link": 126
+          "link": 5,
+          "label": "图像"
         },
         {
           "name": "optional_interpolation_states",
-          "shape": 7,
           "type": "INTERPOLATION_STATES",
-          "link": null
+          "link": null,
+          "label": "插值规则(可选)",
+          "shape": 7
         }
       ],
       "outputs": [
         {
           "name": "IMAGE",
           "type": "IMAGE",
-          "slot_index": 0,
           "links": [
-            128
-          ]
+            23
+          ],
+          "slot_index": 0,
+          "label": "图像",
+          "shape": 3
         }
       ],
       "properties": {
-        "cnr_id": "comfyui-frame-interpolation",
-        "ver": "7578205bd810cf96257b2e32d534b4513892af37",
         "Node name for S&R": "RIFE VFI",
-        "aux_id": "Fannovel16/ComfyUI-Frame-Interpolation"
+        "cnr_id": "comfyui-frame-interpolation",
+        "ver": "c336f7184cb1ac1243381e725fea1ad2c0a10c09"
       },
       "widgets_values": [
         "rife47.pth",
         10,
         2,
-        true,
+        false,
         true,
         1
-      ]
+      ],
+      "_widget_cache_map": {}
     },
     {
-      "id": 43,
-      "type": "UpscaleModelLoader",
-      "pos": [
-        50,
-        323
-      ],
-      "size": [
-        315,
-        58
-      ],
-      "flags": {
-        "collapsed": false
+      "id": 18,
+      "type": "PreviewImage",
+      "pos": {
+        "0": 570,
+        "1": 530
       },
-      "order": 1,
-      "mode": 4,
-      "inputs": [],
+      "size": {
+        "0": 260,
+        "1": 310
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 22,
+          "label": "图像"
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "PreviewImage",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.15"
+      },
+      "widgets_values": [],
+      "_widget_cache_map": {}
+    },
+    {
+      "id": 19,
+      "type": "VHS_VideoCombine",
+      "pos": {
+        "0": 850,
+        "1": 290
+      },
+      "size": [
+        210,
+        661.7777777777778
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 23,
+          "label": "图像"
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 24,
+          "label": "音频",
+          "shape": 7
+        },
+        {
+          "name": "meta_batch",
+          "type": "VHS_BatchManager",
+          "link": null,
+          "label": "批次管理",
+          "shape": 7
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": null,
+          "shape": 7
+        }
+      ],
       "outputs": [
         {
-          "name": "UPSCALE_MODEL",
-          "type": "UPSCALE_MODEL",
-          "slot_index": 0,
-          "links": [
-            90
-          ]
+          "name": "Filenames",
+          "type": "VHS_FILENAMES",
+          "links": null,
+          "label": "文件名",
+          "shape": 3
         }
       ],
       "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.29",
-        "Node name for S&R": "UpscaleModelLoader"
+        "Node name for S&R": "VHS_VideoCombine",
+        "cnr_id": "comfyui-videohelpersuite",
+        "ver": "4c7858ddd5126f7293dc3c9f6e0fc4c263cde079"
       },
-      "widgets_values": [
-        "4xFaceUpSharpDAT.pth"
-      ],
-      "color": "#232",
-      "bgcolor": "#353"
+      "widgets_values": {
+        "frame_rate": 25,
+        "loop_count": 0,
+        "filename_prefix": "AnimateDiff",
+        "format": "video/h264-mp4",
+        "pix_fmt": "yuv420p",
+        "crf": 19,
+        "save_metadata": true,
+        "pingpong": false,
+        "save_output": true,
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "filename": "AnimateDiff_00016-audio.mp4",
+            "subfolder": "",
+            "type": "output",
+            "format": "video/h264-mp4",
+            "frame_rate": 25,
+            "url": "https://liblibai-tmp-image.liblib.cloud/sd-images/f748e0fab77058f1ec35440fa2f329c1cceac11c3765dd84cf974da0e26d7303.mp4",
+            "coverUrl": null,
+            "workflow": "AnimateDiff_00016.png",
+            "fullpath": "D:\\ComfyUI-aki-v1\\ComfyUI-aki-v1\\output\\AnimateDiff_00016-audio.mp4"
+          }
+        }
+      },
+      "_widget_cache_map": {}
     },
     {
-      "id": 53,
+      "id": 22,
       "type": "Note",
-      "pos": [
-        -83,
-        -69
+      "pos": {
+        "0": 600,
+        "1": 180
+      },
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "1.补帧乘数2，还原原视频帧数"
       ],
-      "size": [
-        426.84576416015625,
-        219.49053955078125
+      "_widget_cache_map": {},
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 20,
+      "type": "Note",
+      "pos": {
+        "0": -340,
+        "1": 670
+      },
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "1.上传目标人脸"
       ],
+      "_widget_cache_map": {},
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 21,
+      "type": "Note",
+      "pos": {
+        "0": -120,
+        "1": 160
+      },
+      "size": {
+        "0": 340,
+        "1": 90
+      },
       "flags": {},
       "order": 2,
       "mode": 0,
@@ -547,1034 +245,343 @@
         "text": ""
       },
       "widgets_values": [
-        "SUPER DUPER EASY FACESWAPPER\n**Feel free to experiment with the upscaler of your choice**\n\nInstall the missing nodes using Manager\n\nInsert your image and your video, make sure to have the upscalers (use model download in Comfyui Manager)\nUpload your video either using the youtube node or normal video uploader.\n\nThen you should be good to go, this workflow is quite experimental and will not deliver the most awesome faceswap, but it is still fun to use :)"
+        "1.上传视频文件\n2.设置读取帧数上限，如果视频10秒，帧速率：每秒25帧，那么写250\n3.设置模选为1，每2帧跳过1次，"
       ],
+      "_widget_cache_map": {},
       "color": "#432",
       "bgcolor": "#653"
     },
     {
-      "id": 32,
-      "type": "PreviewImage",
-      "pos": [
-        786,
-        895
-      ],
-      "size": [
-        302.3346252441406,
-        358.22412109375
-      ],
-      "flags": {},
-      "order": 11,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 134
-        }
-      ],
-      "outputs": [],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.29",
-        "Node name for S&R": "PreviewImage"
+      "id": 2,
+      "type": "ReActorFaceSwap",
+      "pos": {
+        "0": 230,
+        "1": 290
       },
-      "widgets_values": []
-    },
-    {
-      "id": 61,
-      "type": "PreviewImage",
-      "pos": [
-        1180,
-        1180
-      ],
-      "size": [
-        210,
-        246
-      ],
-      "flags": {},
-      "order": 24,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 78
-        }
-      ],
-      "outputs": [],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.29",
-        "Node name for S&R": "PreviewImage"
+      "size": {
+        "0": 315,
+        "1": 358
       },
-      "widgets_values": []
-    },
-    {
-      "id": 33,
-      "type": "VHS_VideoCombine",
-      "pos": [
-        1502,
-        91
-      ],
-      "size": [
-        315,
-        513.9375
-      ],
-      "flags": {},
-      "order": 16,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 61
-        },
-        {
-          "name": "audio",
-          "shape": 7,
-          "type": "AUDIO",
-          "link": null
-        },
-        {
-          "name": "meta_batch",
-          "shape": 7,
-          "type": "VHS_BatchManager",
-          "link": null
-        },
-        {
-          "name": "vae",
-          "shape": 7,
-          "type": "VAE",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "Filenames",
-          "type": "VHS_FILENAMES",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfyui-videohelpersuite",
-        "ver": "598e181e97d50174cc18677dfcdaa7b9b6ec0cb2",
-        "Node name for S&R": "VHS_VideoCombine"
-      },
-      "widgets_values": {
-        "frame_rate": 8,
-        "loop_count": 0,
-        "filename_prefix": "FaceSwap/FS_origin",
-        "format": "video/h264-mp4",
-        "pix_fmt": "yuv420p",
-        "crf": 19,
-        "save_metadata": false,
-        "trim_to_audio": false,
-        "pingpong": false,
-        "save_output": true,
-        "videopreview": {
-          "hidden": false,
-          "paused": false,
-          "params": {
-            "filename": "FS_origin_00005.mp4",
-            "subfolder": "FaceSwap",
-            "type": "output",
-            "format": "video/h264-mp4",
-            "frame_rate": 8,
-            "workflow": "FS_origin_00005.png",
-            "fullpath": "/app/ComfyUI/output/FaceSwap/FS_origin_00005.mp4"
-          }
-        }
-      }
-    },
-    {
-      "id": 28,
-      "type": "VHS_VideoCombine",
-      "pos": [
-        1844,
-        91
-      ],
-      "size": [
-        320.8793640136719,
-        517.24462890625
-      ],
-      "flags": {
-        "collapsed": false
-      },
-      "order": 21,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 31
-        },
-        {
-          "name": "audio",
-          "shape": 7,
-          "type": "AUDIO",
-          "link": null
-        },
-        {
-          "name": "meta_batch",
-          "shape": 7,
-          "type": "VHS_BatchManager",
-          "link": null
-        },
-        {
-          "name": "vae",
-          "shape": 7,
-          "type": "VAE",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "Filenames",
-          "type": "VHS_FILENAMES",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfyui-videohelpersuite",
-        "ver": "598e181e97d50174cc18677dfcdaa7b9b6ec0cb2",
-        "Node name for S&R": "VHS_VideoCombine"
-      },
-      "widgets_values": {
-        "frame_rate": 8,
-        "loop_count": 0,
-        "filename_prefix": "FaceSwap/FS_Pass1",
-        "format": "video/h264-mp4",
-        "pix_fmt": "yuv420p",
-        "crf": 19,
-        "save_metadata": true,
-        "trim_to_audio": false,
-        "pingpong": false,
-        "save_output": true,
-        "videopreview": {
-          "hidden": false,
-          "paused": false,
-          "params": {
-            "filename": "FS_Pass1_00005.mp4",
-            "subfolder": "FaceSwap",
-            "type": "output",
-            "format": "video/h264-mp4",
-            "frame_rate": 8,
-            "workflow": "FS_Pass1_00005.png",
-            "fullpath": "/app/ComfyUI/output/FaceSwap/FS_Pass1_00005.mp4"
-          }
-        }
-      }
-    },
-    {
-      "id": 41,
-      "type": "VHS_VideoCombine",
-      "pos": [
-        1522,
-        846
-      ],
-      "size": [
-        631.3635864257812,
-        334
-      ],
-      "flags": {},
-      "order": 27,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 130
-        },
-        {
-          "name": "audio",
-          "shape": 7,
-          "type": "AUDIO",
-          "link": null
-        },
-        {
-          "name": "meta_batch",
-          "shape": 7,
-          "type": "VHS_BatchManager",
-          "link": null
-        },
-        {
-          "name": "vae",
-          "shape": 7,
-          "type": "VAE",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "Filenames",
-          "type": "VHS_FILENAMES",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfyui-videohelpersuite",
-        "ver": "598e181e97d50174cc18677dfcdaa7b9b6ec0cb2",
-        "Node name for S&R": "VHS_VideoCombine"
-      },
-      "widgets_values": {
-        "frame_rate": 24,
-        "loop_count": 0,
-        "filename_prefix": "FaceSwap/FS_Upscale",
-        "format": "video/h264-mp4",
-        "pix_fmt": "yuv420p",
-        "crf": 19,
-        "save_metadata": true,
-        "trim_to_audio": false,
-        "pingpong": false,
-        "save_output": true,
-        "videopreview": {
-          "hidden": false,
-          "paused": false,
-          "params": {
-            "filename": "reactorFinal_00002.mp4",
-            "subfolder": "reactor",
-            "type": "output",
-            "format": "video/h264-mp4"
-          }
-        }
-      }
-    },
-    {
-      "id": 36,
-      "type": "ImageUpscaleWithModel",
-      "pos": [
-        466,
-        272
-      ],
-      "size": [
-        276.0286560058594,
-        46
-      ],
-      "flags": {},
-      "order": 18,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "upscale_model",
-          "type": "UPSCALE_MODEL",
-          "link": 86
-        },
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 39
-        }
-      ],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "slot_index": 0,
-          "links": [
-            41,
-            133
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.29",
-        "Node name for S&R": "ImageUpscaleWithModel"
-      },
-      "widgets_values": []
-    },
-    {
-      "id": 102,
-      "type": "SaveImage",
-      "pos": [
-        758,
-        281
-      ],
-      "size": [
-        315,
-        270
-      ],
-      "flags": {},
-      "order": 20,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 133
-        }
-      ],
-      "outputs": [],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.29",
-        "Node name for S&R": "SaveImage"
-      },
-      "widgets_values": [
-        "FaceSwap/FS_IMG_Input"
-      ]
-    },
-    {
-      "id": 37,
-      "type": "UpscaleModelLoader",
-      "pos": [
-        55,
-        210
-      ],
-      "size": [
-        312.3172607421875,
-        58
-      ],
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "UPSCALE_MODEL",
-          "type": "UPSCALE_MODEL",
-          "slot_index": 0,
-          "links": [
-            84
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.29",
-        "Node name for S&R": "UpscaleModelLoader"
-      },
-      "widgets_values": [
-        "4x_NMKD-Siax_200k.pth"
-      ],
-      "color": "#322",
-      "bgcolor": "#533"
-    },
-    {
-      "id": 74,
-      "type": "Reroute",
-      "pos": [
-        1192.964111328125,
-        1447.0787353515625
-      ],
-      "size": [
-        149.1999969482422,
-        26
-      ],
-      "flags": {},
-      "order": 8,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 90
-        }
-      ],
-      "outputs": [
-        {
-          "name": "UPSCALE_MODEL",
-          "type": "UPSCALE_MODEL",
-          "slot_index": 0,
-          "links": [
-            91
-          ]
-        }
-      ],
-      "properties": {
-        "showOutputText": true,
-        "horizontal": false
-      },
-      "color": "#232",
-      "bgcolor": "#353"
-    },
-    {
-      "id": 75,
-      "type": "Reroute",
-      "pos": [
-        1811.9642333984375,
-        1444.0787353515625
-      ],
-      "size": [
-        149.1999969482422,
-        26
-      ],
-      "flags": {},
-      "order": 13,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 91
-        }
-      ],
-      "outputs": [
-        {
-          "name": "UPSCALE_MODEL",
-          "type": "UPSCALE_MODEL",
-          "slot_index": 0,
-          "links": []
-        }
-      ],
-      "properties": {
-        "showOutputText": true,
-        "horizontal": false
-      },
-      "color": "#232",
-      "bgcolor": "#353"
-    },
-    {
-      "id": 45,
-      "type": "UpscaleModelLoader",
-      "pos": [
-        55.025001525878906,
-        780.8334350585938
-      ],
-      "size": [
-        315,
-        58
-      ],
-      "flags": {
-        "collapsed": false
-      },
-      "order": 4,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "UPSCALE_MODEL",
-          "type": "UPSCALE_MODEL",
-          "slot_index": 0,
-          "links": [
-            87
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.29",
-        "Node name for S&R": "UpscaleModelLoader"
-      },
-      "widgets_values": [
-        "RealESRGAN_x2plus.pth"
-      ],
-      "color": "#223",
-      "bgcolor": "#335"
-    },
-    {
-      "id": 29,
-      "type": "LoadImage",
-      "pos": [
-        453,
-        372
-      ],
-      "size": [
-        287.31390380859375,
-        320.1365661621094
-      ],
       "flags": {},
       "order": 5,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "slot_index": 0,
-          "links": [
-            39
-          ]
-        },
-        {
-          "name": "MASK",
-          "type": "MASK",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.29",
-        "Node name for S&R": "LoadImage"
-      },
-      "widgets_values": [
-        "Screenshot from 2024-04-06 20-21-12.png",
-        "image"
-      ]
-    },
-    {
-      "id": 25,
-      "type": "ReActorFaceSwap",
-      "pos": [
-        1163,
-        246
-      ],
-      "size": [
-        315,
-        358
-      ],
-      "flags": {},
-      "order": 19,
       "mode": 0,
       "inputs": [
         {
           "name": "input_image",
           "type": "IMAGE",
-          "link": 28
+          "link": 1,
+          "label": "目标图像"
         },
         {
           "name": "source_image",
-          "shape": 7,
           "type": "IMAGE",
-          "link": 41
+          "link": 2,
+          "slot_index": 1,
+          "label": "源图像",
+          "shape": 7
         },
         {
           "name": "face_model",
-          "shape": 7,
           "type": "FACE_MODEL",
-          "link": null
+          "link": null,
+          "label": "面部模型",
+          "shape": 7
         },
         {
           "name": "face_boost",
-          "shape": 7,
           "type": "FACE_BOOST",
-          "link": null
+          "link": null,
+          "label": "面部增强",
+          "shape": 7
         }
       ],
       "outputs": [
         {
           "name": "IMAGE",
           "type": "IMAGE",
-          "slot_index": 0,
           "links": [
-            31,
-            126
-          ]
+            5,
+            22
+          ],
+          "slot_index": 0,
+          "label": "图像",
+          "shape": 3
         },
         {
           "name": "FACE_MODEL",
           "type": "FACE_MODEL",
-          "links": null
+          "links": null,
+          "label": "面部模型",
+          "shape": 3
         }
       ],
       "properties": {
-        "aux_id": "comfyui-reactor-node.git",
-        "ver": "976a8c51bab55fe5443392566ab4e6a9315eed6a",
-        "Node name for S&R": "ReActorFaceSwap"
+        "Node name for S&R": "ReActorFaceSwap",
+        "cnr_id": "comfyui-reactor-node",
+        "ver": "a43075813dbd17de9c51c9fc7ea768eaf1681d89"
       },
       "widgets_values": [
         true,
         "inswapper_128.onnx",
         "retinaface_resnet50",
-        "GFPGANv1.4.pth",
-        1,
+        "GPEN-BFR-512.onnx",
+        0.49,
         0.5,
         "no",
-        "female",
+        "no",
         "0",
         "0",
         1
-      ]
+      ],
+      "_widget_cache_map": {}
     },
     {
-      "id": 103,
-      "type": "UltimateVideoLoader",
-      "pos": [
-        438.9349365234375,
-        903.3221435546875
-      ],
+      "id": 1,
+      "type": "VHS_LoadVideo",
+      "pos": {
+        "0": -120,
+        "1": 290
+      },
       "size": [
-        330,
-        450
+        340,
+        844.8888888888889
       ],
-      "flags": {},
-      "order": 6,
+      "flags": {
+        "collapsed": false
+      },
+      "order": 3,
       "mode": 0,
-      "inputs": [],
+      "inputs": [
+        {
+          "name": "meta_batch",
+          "type": "VHS_BatchManager",
+          "link": null,
+          "label": "批次管理",
+          "shape": 7
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": null,
+          "shape": 7
+        }
+      ],
       "outputs": [
         {
-          "name": "images",
+          "name": "IMAGE",
           "type": "IMAGE",
           "links": [
-            134,
-            135
-          ]
+            1
+          ],
+          "slot_index": 0,
+          "label": "图像",
+          "shape": 3
         },
         {
           "name": "frame_count",
           "type": "INT",
-          "links": null
+          "links": null,
+          "slot_index": 1,
+          "label": "帧计数",
+          "shape": 3
         },
         {
-          "name": "fps",
-          "type": "INT",
-          "links": null
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            24
+          ],
+          "slot_index": 2,
+          "label": "音频",
+          "shape": 3
         },
         {
-          "name": "width",
-          "type": "INT",
-          "links": null
-        },
-        {
-          "name": "height",
-          "type": "INT",
-          "links": null
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "links": null,
+          "label": "视频信息",
+          "shape": 3
         }
       ],
       "properties": {
-        "cnr_id": "komojini-comfyui-nodes",
-        "ver": "0f5b4eb08f5c3823ba32228d0b58155feffc0986",
-        "Node name for S&R": "UltimateVideoLoader"
+        "Node name for S&R": "VHS_LoadVideo",
+        "cnr_id": "comfyui-videohelpersuite",
+        "ver": "4c7858ddd5126f7293dc3c9f6e0fc4c263cde079"
       },
       "widgets_values": {
-        "source": "fileupload",
-        "youtube_url": "youtube/url/here",
-        "video": "X://insert/path/here.mp4",
-        "upload": "2025-04-21 18-15-42.mp4",
-        "start_sec": 0,
-        "end_sec": 0,
-        "max_fps": -1,
+        "video": "原视频.mp4",
+        "force_rate": 25,
         "force_size": "Disabled",
-        "custom_width": 512,
-        "custom_height": 512,
-        "frame_load_cap": 200,
-        "width": 512,
-        "height": 512,
-        "frame_count": 1,
-        "fps": 30,
+        "custom_width": 720,
+        "custom_height": 1280,
+        "frame_load_cap": 330,
+        "skip_first_frames": 0,
+        "select_every_nth": 2,
         "choose video to upload": "image",
         "videopreview": {
-          "hidden": true,
+          "hidden": false,
           "paused": false,
           "params": {
-            "frame_load_cap": 200,
-            "end_sec": 0,
-            "start_sec": 0,
-            "filename": "2025-04-21 18-15-42.mp4",
+            "frame_load_cap": 330,
+            "skip_first_frames": 0,
+            "force_rate": 25,
+            "filename": "原视频.mp4",
             "type": "input",
             "format": "video/mp4",
-            "max_fps": -1
+            "select_every_nth": 2,
+            "value": "video/eca755ce1b6946a886182665ed2f528e/63d81c024227ba7776958802936b223bb2631fbdd4c725478db20f530ac25dfe.mp4",
+            "name": "原视频.mp4",
+            "url": "https://liblibai-tmp-image.liblib.cloud/video/eca755ce1b6946a886182665ed2f528e/63d81c024227ba7776958802936b223bb2631fbdd4c725478db20f530ac25dfe.mp4"
           }
+        }
+      },
+      "_widget_cache_map": {
+        "原视频.mp4": {
+          "value": "video/eca755ce1b6946a886182665ed2f528e/63d81c024227ba7776958802936b223bb2631fbdd4c725478db20f530ac25dfe.mp4",
+          "name": "原视频.mp4",
+          "filename": "原视频.mp4",
+          "format": "video/mp4",
+          "url": "https://liblibai-tmp-image.liblib.cloud/video/eca755ce1b6946a886182665ed2f528e/63d81c024227ba7776958802936b223bb2631fbdd4c725478db20f530ac25dfe.mp4"
         }
       }
     },
     {
-      "id": 18,
-      "type": "YouTubeVideoLoader",
-      "pos": [
-        807.0870971679688,
-        1349.1937255859375
-      ],
-      "size": [
-        315,
-        282
-      ],
+      "id": 3,
+      "type": "LoadImage",
+      "pos": {
+        "0": -340,
+        "1": 300
+      },
+      "size": {
+        "0": 210,
+        "1": 330
+      },
       "flags": {},
-      "order": 7,
-      "mode": 4,
+      "order": 4,
+      "mode": 0,
       "inputs": [],
       "outputs": [
         {
-          "name": "images",
+          "name": "IMAGE",
           "type": "IMAGE",
-          "slot_index": 0,
-          "links": []
+          "links": [
+            2
+          ],
+          "label": "图像",
+          "shape": 3
         },
         {
-          "name": "frame_count",
-          "type": "INT",
-          "links": null
-        },
-        {
-          "name": "fps",
-          "type": "INT",
-          "links": null
-        },
-        {
-          "name": "width",
-          "type": "INT",
-          "links": null
-        },
-        {
-          "name": "height",
-          "type": "INT",
-          "links": null
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "label": "遮罩",
+          "shape": 3
         }
       ],
-      "title": "johnwick",
       "properties": {
-        "cnr_id": "komojini-comfyui-nodes",
-        "ver": "0f5b4eb08f5c3823ba32228d0b58155feffc0986",
-        "Node name for S&R": "YouTubeVideoLoader",
-        "aux_id": "komojini/komojini-comfyui-nodes"
+        "Node name for S&R": "LoadImage",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.15"
       },
       "widgets_values": [
-        "https://www.youtube.com/watch?v=s_h_rYTZN1Y&list=PLeOmn01eI0zqCWdt9RGHQ9IX8OJfgl9Cn",
-        166,
-        168,
-        12,
-        "Disabled",
-        140,
-        ""
-      ]
+        "新人.png",
+        "image"
+      ],
+      "_widget_cache_map": {
+        "新人.png": {
+          "value": "img/eca755ce1b6946a886182665ed2f528e/042aa82c7de9dcd367170683d7cdb2bd320feff6c26d9007e06a983ab09c3ea6.png",
+          "name": "新人.png",
+          "url": "https://liblibai-tmp-image.liblib.cloud/img/eca755ce1b6946a886182665ed2f528e/042aa82c7de9dcd367170683d7cdb2bd320feff6c26d9007e06a983ab09c3ea6.png",
+          "width": 1024,
+          "height": 1536
+        }
+      }
     }
   ],
   "links": [
     [
-      28,
-      26,
+      1,
+      1,
       0,
-      25,
-      0,
-      "IMAGE"
-    ],
-    [
-      31,
-      25,
-      0,
-      28,
+      2,
       0,
       "IMAGE"
     ],
     [
-      39,
-      29,
+      2,
+      3,
       0,
-      36,
+      2,
       1,
       "IMAGE"
     ],
     [
-      41,
-      36,
+      5,
+      2,
       0,
-      25,
+      6,
+      0,
+      "IMAGE"
+    ],
+    [
+      22,
+      2,
+      0,
+      18,
+      0,
+      "IMAGE"
+    ],
+    [
+      23,
+      6,
+      0,
+      19,
+      0,
+      "IMAGE"
+    ],
+    [
+      24,
       1,
-      "IMAGE"
-    ],
-    [
-      61,
-      52,
-      0,
-      33,
-      0,
-      "IMAGE"
-    ],
-    [
-      62,
-      52,
-      0,
-      26,
-      0,
-      "IMAGE"
-    ],
-    [
-      78,
-      44,
-      0,
-      61,
-      0,
-      "IMAGE"
-    ],
-    [
-      84,
-      37,
-      0,
-      70,
-      0,
-      "*"
-    ],
-    [
-      85,
-      70,
-      0,
-      71,
-      0,
-      "*"
-    ],
-    [
-      86,
-      71,
-      0,
-      36,
-      0,
-      "UPSCALE_MODEL"
-    ],
-    [
-      87,
-      45,
-      0,
-      72,
-      0,
-      "*"
-    ],
-    [
-      88,
-      72,
-      0,
-      73,
-      0,
-      "*"
-    ],
-    [
-      89,
-      73,
-      0,
-      44,
-      0,
-      "UPSCALE_MODEL"
-    ],
-    [
-      90,
-      43,
-      0,
-      74,
-      0,
-      "*"
-    ],
-    [
-      91,
-      74,
-      0,
-      75,
-      0,
-      "*"
-    ],
-    [
-      124,
-      44,
-      0,
-      60,
-      0,
-      "IMAGE"
-    ],
-    [
-      126,
-      25,
-      0,
-      46,
-      0,
-      "IMAGE"
-    ],
-    [
-      128,
-      46,
-      0,
-      44,
+      2,
+      19,
       1,
-      "IMAGE"
-    ],
-    [
-      129,
-      44,
-      0,
-      59,
-      0,
-      "IMAGE"
-    ],
-    [
-      130,
-      59,
-      0,
-      41,
-      0,
-      "IMAGE"
-    ],
-    [
-      133,
-      36,
-      0,
-      102,
-      0,
-      "IMAGE"
-    ],
-    [
-      134,
-      103,
-      0,
-      32,
-      0,
-      "IMAGE"
-    ],
-    [
-      135,
-      103,
-      0,
-      52,
-      0,
-      "*"
+      "VHS_AUDIO"
     ]
   ],
   "groups": [
     {
-      "id": 1,
-      "title": "INPUT_VIDEO",
+      "title": "给视频人物换脸",
       "bounding": [
-        421,
-        740,
-        707.3245239257812,
-        622.9422607421875
+        -370,
+        30,
+        1450,
+        1170
       ],
-      "color": "#A88",
-      "font_size": 24,
-      "flags": {}
-    },
-    {
-      "id": 2,
-      "title": "INPUT FACE",
-      "bounding": [
-        422,
-        148,
-        706,
-        572
-      ],
-      "color": "#A88",
-      "font_size": 24,
-      "flags": {}
-    },
-    {
-      "id": 3,
-      "title": "FIRST PASS",
-      "bounding": [
-        1146,
-        -23,
-        1033,
-        633
-      ],
-      "color": "#3f789e",
-      "font_size": 24,
-      "flags": {}
-    },
-    {
-      "id": 4,
-      "title": "UPSCALE",
-      "bounding": [
-        1150,
-        627,
-        1042,
-        903
-      ],
-      "color": "#b58b2a",
-      "font_size": 24,
+      "color": "#b06634",
+      "font_size": 60,
       "flags": {}
     }
   ],
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.9090909090909091,
+      "scale": 1.1671841070450009,
       "offset": [
-        845.1166909190106,
-        -534.6776490279618
+        576.8054974643919,
+        -106.27976980881752
       ]
     },
+    "0246.VERSION": [
+      0,
+      0,
+      4
+    ],
     "ue_links": [],
-    "frontendVersion": "1.16.9",
-    "VHS_latentpreview": false,
-    "VHS_latentpreviewrate": 0,
-    "VHS_MetadataImage": true,
-    "VHS_KeepIntermediate": true
+    "workspace_info": {
+      "id": "dzVd1PnJ-xzkpcB2wgs_B"
+    }
   },
-  "version": 0.4
+  "version": 0.4,
+  "widget_idx_map": {},
+  "seed_widgets": {}
 }

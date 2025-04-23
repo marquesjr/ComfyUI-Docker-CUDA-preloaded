@@ -24,6 +24,7 @@ LIST_NAMES=(
   VAE
   CONTROLNET
   PULID
+  IPADAPTER
 )
 
 # 2) Declare empty arrays for each
@@ -70,7 +71,7 @@ git_clone_or_update() {
     (cd "$target" && git pull --quiet) || echo "Warning: git pull failed in $target"
   else
     echo "Cloning $(basename "$repo")..."
-    git clone "$repo" "$target"
+    git clone --recursive --quiet "$repo" "$target"
   fi
 }
 # ---------------------------------------------

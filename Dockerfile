@@ -67,7 +67,7 @@ RUN pip install --no-cache-dir -r requirements.txt && \
     scikit-image \
     imageio \
     pillow \
-    hf-transfer huggingface-hub \
+    hf-transfer \
     insightface \
     facexlib \
     git+https://github.com/rodjjo/filterpy.git \

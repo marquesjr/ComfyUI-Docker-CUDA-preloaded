@@ -28,7 +28,7 @@ git_clone_or_update() {
     git -C "$dir" reset --hard "origin/$branch" --quiet || return 4
   else
     echo "[INFO] Cloning $name from $url"
-    git clone --quiet "$url" "$dir" || return 5
+    git clone --recursive --quiet "$url" "$dir" || return 5
   fi
 
   # Check for new commit

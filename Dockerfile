@@ -68,7 +68,8 @@ RUN pip install --no-cache-dir -r requirements.txt && \
     imageio \
     pillow \
     hf-transfer \
-    insightface \
+    triton \
+    streamdiffusion \
     facexlib \
     git+https://github.com/rodjjo/filterpy.git \
     onnxruntime onnxruntime-gpu \

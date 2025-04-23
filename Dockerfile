@@ -32,6 +32,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     fonts-dejavu-core \
     fonts-liberation \
     fontconfig \
+    ffmpeg \
     && fc-cache -f -v \
     && rm -rf /var/lib/apt/lists/*
 
@@ -70,6 +71,7 @@ RUN pip install --no-cache-dir -r requirements.txt && \
     hf-transfer \
     triton \
     streamdiffusion \
+    huggingface_hub \
     facexlib \
     git+https://github.com/rodjjo/filterpy.git \
     onnxruntime onnxruntime-gpu \

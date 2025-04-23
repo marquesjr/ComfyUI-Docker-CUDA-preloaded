@@ -59,6 +59,14 @@ while IFS= read -r line; do
       break
     fi
   done
+
+  for name in GIT_REPOS CUSTOM; do
+    if [[ "$current" == "$name" ]]; then
+      eval "${name}+=(\"$line\")"
+      break
+    fi
+  done
+
 done </app/models.conf
 
 # --- Helpers ---
@@ -72,6 +80,7 @@ git_clone_or_update() {
   else
     echo "Cloning $(basename "$repo")..."
     git clone --recursive --quiet "$repo" "$target"
+    cd "$repo" && git lfs install && git lfs pull && cd ..
   fi
 }
 # ---------------------------------------------

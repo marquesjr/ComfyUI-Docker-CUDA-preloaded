@@ -73,6 +73,16 @@ docker volume rm comfyui_venv
 rm -Rf custom_nodes/.last_commits
 docker compose build
 docker compose up
+
+## Commercial Workflows
 ```
 
 The venv volume might not have libraries added only in the build, so you need to nuke it. then erase last_commits so the init_extensions download all extension dependencies again.
+
+There are several commercial workflows that are very interesting. This one creates NPC characters, useful for game developers on a budget: https://www.youtube.com/watch?v=grtmiWbmvv0
+
+This is the Patreon to buy: https://www.patreon.com/posts/free-workflows-120405048
+
+My setup works out of the box for that, but you will need to manually:
+- right click on every Ultimate SD Sampler nodes and "fix recreate"
+- right click on every Anything Everywhere Nodes, fix recreate, and reconnect correctly

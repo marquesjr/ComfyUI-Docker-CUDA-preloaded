@@ -1,55 +1,61 @@
-#!/usr/bin/env bash
+#!/bin/bash
 set -euo pipefail
 
-# ---------------------------------------------
-# init_extensions.sh (full list with error handling)
-# ---------------------------------------------
+# Source common configuration
+source /usr/local/bin/config.sh
 
-# Base ComfyUI directories
-COMFY_DIR="/app/ComfyUI"
-CUSTOM_DIR="$COMFY_DIR/custom_nodes"
-LAST_DIR="$CUSTOM_DIR/.last_commits"
-# Ensure directories exist
-mkdir -p "$CUSTOM_DIR" "$LAST_DIR"
-
-# Function: clone or update a git repo, track last commit centrally
-# Usage: git_clone_or_update <target_dir> <git_url>
-# Returns: 0 if new clone or updated commit; 1 if unchanged; >1 on error
-git_clone_or_update() {
-  local dir="$1" url="$2"
+# Function: track commits for extensions
+track_extension_commit() {
+  local dir="$1"
   local name=$(basename "$dir")
   local last_commit_file="$LAST_DIR/${name}.commit"
   local new_commit old_commit branch
 
-  if [ -d "$dir/.git" ]; then
-    echo "[INFO] Fetching updates for $name"
-    git -C "$dir" fetch --quiet || return 2
-    branch=$(git -C "$dir" rev-parse --abbrev-ref HEAD) || return 3
-    git -C "$dir" reset --hard "origin/$branch" --quiet || return 4
-  else
-    echo "[INFO] Cloning $name from $url"
-    git clone --recursive --quiet "$url" "$dir" || return 5
-  fi
+  # Get new commit
+  new_commit=$(git -C "$dir" rev-parse HEAD 2>/dev/null) || {
+    log "ERROR" "Failed to get commit hash for $name"
+    return 1
+  }
 
-  # Check for new commit
-  new_commit=$(git -C "$dir" rev-parse HEAD) || return 6
+  # Compare with old commit
   old_commit=""
   if [ -f "$last_commit_file" ]; then
     old_commit=$(<"$last_commit_file")
   fi
+
   if [ "$new_commit" != "$old_commit" ]; then
     echo "$new_commit" >"$last_commit_file"
-    return 0
+    log "INFO" "New commit detected for $name: $new_commit"
+    return 0 # Changes detected
   else
-    echo "[INFO] No changes in $name ($new_commit)"
-    return 1
+    log "INFO" "No changes in $name (commit: $new_commit)"
+    return 1 # No changes
   fi
 }
 
-# ---------------------------------------------
-# 1) Clone/update ComfyUI extensions
-# ---------------------------------------------
+# Function: install extension dependencies
+install_extension_deps() {
+  local dir="$1"
+  local name=$(basename "$dir")
+
+  if [ -f "$dir/requirements.txt" ]; then
+    log "INFO" "Installing dependencies for $name"
+    if pip install --no-cache-dir -r "$dir/requirements.txt"; then
+      log "INFO" "Successfully installed dependencies for $name"
+      return 0
+    else
+      log "WARN" "Failed to install dependencies for $name"
+      return 1
+    fi
+  else
+    log "INFO" "No requirements.txt found for $name"
+    return 0
+  fi
+}
+
+# Parse extensions from config file
 EXTENSIONS=()
+log "INFO" "Parsing extensions configuration"
 
 while IFS= read -r line; do
   line="${line%%[#;]*}"
@@ -59,21 +65,28 @@ while IFS= read -r line; do
   EXTENSIONS+=("$line")
 done </app/extensions.conf
 
-echo "== Cloning/updating extensions in $CUSTOM_DIR =="
+log "INFO" "== Processing Extensions =="
+log "INFO" "Found ${#EXTENSIONS[@]} extensions to process"
+
 for url in "${EXTENSIONS[@]}"; do
   name=$(basename "$url" .git)
   target="$CUSTOM_DIR/$name"
-  if git_clone_or_update "$target" "$url"; then
-    if [ -f "$target/requirements.txt" ]; then
-      echo "[INFO] Installing deps for $name..."
-      pip install --no-cache-dir -r "$target/requirements.txt" ||
-        echo "[WARNING] pip install failed for $name"
-    fi
+
+  log "INFO" "Processing extension: $name from $url"
+
+  # Clone or update the repository
+  if ! git_clone_or_update "$target" "$url"; then
+    log "WARN" "Failed to update/clone extension: $name, skipping dependency installation"
+    continue
+  fi
+
+  # Check if there are new commits
+  if track_extension_commit "$target"; then
+    # Only install dependencies if there are new commits
+    install_extension_deps "$target" || log "WARN" "Dependency installation issues for $name, but continuing"
+  else
+    log "INFO" "No changes detected for $name, skipping dependency installation"
   fi
 done
 
-# ---------------------------------------------
-# Done
-# ---------------------------------------------
-echo
-echo "Extensions initialization complete."
+log "INFO" "== Extensions initialization complete =="

@@ -63,6 +63,8 @@ Original: https://github.com/TemryL/ComfyUI-IDM-VTON
 
 ## Common Errors
 
+If you think there are missing models, or you see downloading errors during `docker compose up`, you can run `check_urls.sh`. It will check each URL in the `models.conf` file so you can see which ones became inaccessible for some reason.
+
 If you see a dialog box in ComfyUI complaining about "Header too Small", pay attention which Node and file. Then browse to the path, like "models/lora/flu1-canny-dev-lora.safetensors", let's say. It's probably 0 bytes because the download failed. Check the URL in models.conf and re-download to see if the URL is 404 Not Found.
 
 Every time you `git pull` and you see a change in the Dockerfile, you need to do the following:

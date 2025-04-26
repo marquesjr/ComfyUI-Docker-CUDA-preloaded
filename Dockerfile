@@ -60,6 +60,12 @@ RUN pip install --no-cache-dir --upgrade pip && \
     --index-url https://download.pytorch.org/whl/cu124 && \
     pip install --no-cache-dir -U xformers --index-url https://download.pytorch.org/whl/cu124
 
+RUN git clone https://github.com/TimDettmers/bitsandbytes.git /tmp/bitsandbytes \
+    && cd /tmp/bitsandbytes \
+    && python3 install_cuda.py 126 \
+    && pip install . \
+    && rm -rf /tmp/bitsandbytes
+
 # Clone ComfyUI
 WORKDIR /app
 RUN git clone https://github.com/comfyanonymous/ComfyUI ${COMFYUI_DIR}

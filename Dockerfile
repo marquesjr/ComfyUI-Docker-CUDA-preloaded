@@ -19,6 +19,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     git-lfs \
     ninja-build \
+    cmake \
     # Python
     python3.12 \
     python3.12-dev \
@@ -60,11 +61,16 @@ RUN pip install --no-cache-dir --upgrade pip && \
     --index-url https://download.pytorch.org/whl/cu124 && \
     pip install --no-cache-dir -U xformers --index-url https://download.pytorch.org/whl/cu124
 
-RUN git clone https://github.com/TimDettmers/bitsandbytes.git /tmp/bitsandbytes \
-    && cd /tmp/bitsandbytes \
-    && python3 install_cuda.py 126 \
-    && pip install . \
-    && rm -rf /tmp/bitsandbytes
+RUN git clone https://github.com/TimDettmers/bitsandbytes.git /tmp/bitsandbytes && \
+    cd /tmp/bitsandbytes && \
+    export CUDA_HOME=/usr/local/cuda && \
+    export PATH=$CUDA_HOME/bin:$PATH && \
+    export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH && \
+    cmake -B build -DCOMPUTE_BACKEND=cuda -DCMAKE_CUDA_COMPILER=$CUDA_HOME/bin/nvcc . && \
+    cmake --build build -j$(nproc) && \
+    cp bitsandbytes/libbitsandbytes_cuda128.so bitsandbytes/libbitsandbytes_cuda124.so && \
+    pip install . && \
+    cd / && rm -rf /tmp/bitsandbytes
 
 # Clone ComfyUI
 WORKDIR /app

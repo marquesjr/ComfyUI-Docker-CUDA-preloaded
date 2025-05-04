@@ -9,7 +9,7 @@ trap 'echo "Error at line $LINENO. Command: $BASH_COMMAND"' ERR
 source /usr/local/bin/config.sh
 
 # Estimated space needed (adjust as needed)
-ESTIMATED_SPACE=250000 # 250GB in MB
+ESTIMATED_SPACE=50000 # 50GB in MB
 check_disk_space "$ESTIMATED_SPACE" || log "WARN" "Continuing with download, but you may run out of disk space"
 
 # 1) Define all your "regular" sections once
